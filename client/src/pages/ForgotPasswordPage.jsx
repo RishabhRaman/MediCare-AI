@@ -1,0 +1,91 @@
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Mail, HeartPulse, ArrowLeft } from 'lucide-react';
+import api from '../services/api';
+import Button from '../components/ui/Button';
+import Input from '../components/ui/Input';
+import toast from 'react-hot-toast';
+
+const ForgotPasswordPage = () => {
+  const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [resetUrl, setResetUrl] = useState('');
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResetUrl('');
+    try {
+      const res = await api.post('/auth/forgot-password', { email });
+      setSent(true);
+      if (res.data.resetUrl) setResetUrl(res.data.resetUrl);
+      toast.success(res.data.message || 'Reset instructions sent.');
+    } catch (err) {
+      toast.error(err.message || 'Unable to start password reset.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-12">
+      <div className="w-full max-w-md space-y-6">
+        <div className="text-center space-y-2">
+          <div className="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 p-0.5">
+            <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
+              <HeartPulse className="w-6 h-6 text-cyan-400" />
+            </div>
+          </div>
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Reset your password</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400">
+            Enter the email on your MediCare AI account. We will issue a time-limited reset link.
+          </p>
+        </div>
+
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              label="Email Address"
+              type="email"
+              placeholder="you@example.com"
+              icon={Mail}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Button type="submit" variant="primary" size="lg" loading={loading} className="w-full">
+              Send reset link
+            </Button>
+          </form>
+
+          {sent && (
+            <div className="mt-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-xs text-slate-600 dark:text-slate-300">
+              <p>
+                If that email is registered, a reset link was generated. Local development shows the
+                link here because SMTP is optional.
+              </p>
+              {resetUrl && (
+                <Link
+                  to={resetUrl.replace(window.location.origin, '')}
+                  className="mt-2 inline-block font-semibold text-sky-500 underline break-all"
+                >
+                  Continue to reset password
+                </Link>
+              )}
+            </div>
+          )}
+
+          <Link
+            to="/login"
+            className="mt-6 flex items-center justify-center gap-1.5 text-xs text-slate-500 hover:text-sky-500"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" /> Back to sign in
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ForgotPasswordPage;

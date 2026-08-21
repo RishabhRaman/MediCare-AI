@@ -1,0 +1,20 @@
+{
+  "name": "medicare-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MediCare AI - Full-Stack AI-Powered Medical Assistant Web Application (MERN)",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail -n SERVER,CLIENT -c cyan.bold,magenta.bold \"npm run server\" \"npm run client:wait\"",
+    "start": "npm run dev",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "client:wait": "wait-on http-get://127.0.0.1:5000/api/health --timeout 120000 --interval 500 && npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "build": "npm run build --prefix client",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "wait-on": "^7.2.0"
+  }
+}

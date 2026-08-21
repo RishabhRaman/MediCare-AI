@@ -1,0 +1,148 @@
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Mail, Lock, Sparkles, HeartPulse } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
+import Button from '../components/ui/Button';
+import Input from '../components/ui/Input';
+import GoogleAuthButton from '../components/auth/GoogleAuthButton';
+
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [demoLoading, setDemoLoading] = useState(false);
+  const { login, demoLogin } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !password) return;
+
+    setLoading(true);
+    const res = await login(email, password);
+    setLoading(false);
+
+    if (res.success) {
+      navigate('/dashboard');
+    }
+  };
+
+  const handleDemoClick = async () => {
+    setDemoLoading(true);
+    const res = await demoLogin();
+    setDemoLoading(false);
+
+    if (res.success) {
+      navigate('/dashboard');
+    }
+  };
+
+  return (
+    <div className="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
+      <div className="w-full max-w-md space-y-6">
+        {/* Brand Header */}
+        <div className="text-center space-y-2">
+          <div className="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 p-0.5 shadow-md shadow-sky-500/20">
+            <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
+              <HeartPulse className="w-6 h-6 text-cyan-400" />
+            </div>
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            Welcome to MediCare AI
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Sign in to access your personal medical dashboard & report analysis.
+          </p>
+        </div>
+
+        {/* 1-Click Demo Login Banner */}
+        <div className="glass-card rounded-2xl p-4 border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 via-sky-500/10 to-transparent">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 animate-pulse" />
+              <div className="text-left">
+                <p className="text-xs font-bold text-slate-900 dark:text-white">
+                  Want a quick portfolio tour?
+                </p>
+                <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                  Instant sign-in preloaded with clinical lab data.
+                </p>
+              </div>
+            </div>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={handleDemoClick}
+              loading={demoLoading}
+              icon={Sparkles}
+              className="text-xs shrink-0"
+            >
+              Demo Login
+            </Button>
+          </div>
+        </div>
+
+        {/* Login Form */}
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              label="Email Address"
+              type="email"
+              placeholder="you@example.com"
+              icon={Mail}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+            <Input
+              label="Password"
+              type="password"
+              placeholder="••••••••"
+              icon={Lock}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+            <div className="flex justify-end">
+              <Link to="/forgot-password" className="text-xs font-semibold text-sky-500 hover:text-sky-400">
+                Forgot password?
+              </Link>
+            </div>
+
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              loading={loading}
+              className="w-full shadow-lg shadow-sky-500/20 text-sm py-3 mt-2"
+            >
+              Sign In to Patient Portal
+            </Button>
+          </form>
+
+          <div className="relative my-5">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-slate-200 dark:border-slate-700" />
+            </div>
+            <div className="relative flex justify-center text-[10px] uppercase tracking-wider">
+              <span className="bg-white dark:bg-slate-900 px-2 text-slate-400">or</span>
+            </div>
+          </div>
+
+          <GoogleAuthButton label="Continue with Google" />
+
+          <div className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
+            Don't have an account?{' '}
+            <Link to="/register" className="text-sky-500 hover:text-sky-400 font-semibold underline">
+              Create an account
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;
