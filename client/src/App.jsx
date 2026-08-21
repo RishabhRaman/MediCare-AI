@@ -61,7 +61,7 @@ const AppContent = () => {
     location.pathname.startsWith('/auth/callback');
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 dark:bg-[#0a0f1d] dark:text-slate-100 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-[#f6f8f7] text-[#173b3f] dark:bg-[#0d2527] dark:text-slate-100 transition-colors duration-200">
       {/* Permanent Safety Notice Banner */}
       <DisclaimerBanner />
 

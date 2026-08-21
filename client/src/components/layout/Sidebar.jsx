@@ -54,7 +54,7 @@ const navItems = [
 
 const Sidebar = () => {
   return (
-    <aside className="w-64 shrink-0 hidden md:block border-r border-slate-200 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/50 backdrop-blur-xl min-h-[calc(100vh-4rem)] p-4 transition-all duration-200">
+    <aside className="w-64 shrink-0 hidden md:block border-r border-[#d7e2df] dark:border-[#294543] bg-[#eef4f2] dark:bg-[#0d2527] min-h-[calc(100vh-4rem)] p-4 transition-all duration-200">
       {/* Navigation Group */}
       <div className="space-y-1">
         <p className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
@@ -70,7 +70,7 @@ const Sidebar = () => {
               className={({ isActive }) =>
                 `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 group ${
                   isActive
-                    ? 'bg-gradient-to-r from-sky-500/15 to-cyan-500/10 text-sky-600 dark:text-sky-400 border border-sky-500/30 shadow-sm'
+                    ? 'bg-white dark:bg-[#173b3f] text-[#0b5755] dark:text-[#b8ded5] border-l-4 border-[#0f6b68] shadow-sm'
                     : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-850'
                 }`
               }
@@ -90,7 +90,7 @@ const Sidebar = () => {
       </div>
 
       {/* Safety Compliance & AI Badge Card */}
-      <div className="mt-8 p-3.5 rounded-2xl bg-gradient-to-br from-slate-900 via-sky-950/40 to-slate-900 border border-sky-500/20 text-slate-300 space-y-2">
+      <div className="mt-8 p-3.5 rounded-lg bg-[#173b3f] border border-[#416360] text-slate-300 space-y-2">
         <div className="flex items-center gap-2 text-sky-400 text-xs font-bold">
           <Sparkles className="w-4 h-4" />
           <span>AI Clinical Intelligence</span>

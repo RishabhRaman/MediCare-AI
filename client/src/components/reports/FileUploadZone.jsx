@@ -69,7 +69,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
   };
 
   return (
-    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl">
+    <div className="glass-card rounded-lg p-6 sm:p-8">
       {/* Tabs */}
       <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
         <div className="flex gap-2">
@@ -77,7 +77,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             onClick={() => setActiveTab('upload')}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
               activeTab === 'upload'
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
+                ? 'bg-[#0f6b68] text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
             }`}
           >
@@ -88,7 +88,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             onClick={() => setActiveTab('text')}
             className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
               activeTab === 'text'
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
+                ? 'bg-[#0f6b68] text-white shadow-sm'
                 : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
             }`}
           >
@@ -155,10 +155,10 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             onClick={() => fileInputRef.current?.click()}
             className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 ${
               dragActive
-                ? 'border-sky-500 bg-sky-500/10 scale-[1.01]'
+                ? 'border-[#0f6b68] bg-[#dcefe9] scale-[1.01]'
                 : file
                 ? 'border-emerald-500/50 bg-emerald-500/5'
-                : 'border-slate-300 dark:border-slate-700/80 hover:border-sky-400 dark:hover:border-sky-500/60 bg-slate-50/50 dark:bg-slate-900/40'
+                : 'border-[#b8c9c5] dark:border-slate-700/80 hover:border-[#0f6b68] dark:hover:border-[#4aa497]/60 bg-[#f6f8f7] dark:bg-slate-900/40'
             }`}
           >
             <input
@@ -192,12 +192,12 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
               </div>
             ) : (
               <div className="flex flex-col items-center gap-3">
-                <div className="w-16 h-16 rounded-2xl bg-sky-500/10 text-sky-400 flex items-center justify-center border border-sky-500/20 shadow-glow">
+                <div className="w-16 h-16 rounded-lg bg-[#dcefe9] text-[#0f6b68] flex items-center justify-center border border-[#b8ded5]">
                   <Upload className="w-8 h-8" />
                 </div>
                 <div>
                   <p className="text-base font-semibold text-slate-800 dark:text-slate-200">
-                    Drag & drop your medical document here, or <span className="text-sky-500">browse</span>
+                    Drag & drop your medical document here, or <span className="text-[#0f6b68]">browse</span>
                   </p>
                   <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                     Supports PDF, PNG, JPG, and WEBP lab reports (up to 15MB)

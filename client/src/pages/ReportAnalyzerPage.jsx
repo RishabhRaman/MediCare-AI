@@ -106,7 +106,7 @@ const ReportAnalyzerPage = ({ onEmergencyTrigger }) => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-500">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#0f6b68]">
             Diagnostic AI Vision
           </span>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">

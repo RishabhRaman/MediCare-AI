@@ -1,19 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   * {
-    border-color: theme('colors.slate.200');
+    border-color: #d7e2df;
   }
   .dark * {
-    border-color: theme('colors.slate.800');
+    border-color: #294543;
   }
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: #f6f8f7;
+    color: #173b3f;
+    letter-spacing: 0;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Literata', Georgia, serif;
+    letter-spacing: 0;
+  }
+  button, input, select, textarea {
+    font: inherit;
+  }
+  :focus-visible {
+    outline: 3px solid rgba(15, 107, 104, 0.35);
+    outline-offset: 2px;
   }
 }
 
@@ -28,42 +41,42 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.3);
-  border-radius: 9999px;
+  background: #a9bfbb;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.6);
+  background: #72938e;
 }
 
-/* Glassmorphism Accents */
 .glass-card {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: #ffffff;
+  border: 1px solid #d7e2df;
+  box-shadow: 0 8px 24px rgba(23, 59, 63, 0.06);
 }
 
 .dark .glass-card {
-  background: rgba(17, 24, 39, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(31, 41, 55, 0.7);
+  background: #102a2c;
+  border-color: #294543;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(246, 248, 247, 0.96);
+  border-bottom: 1px solid #d7e2df;
 }
 
 .dark .glass-nav {
-  background: rgba(10, 15, 29, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(31, 41, 55, 0.7);
+  background: rgba(13, 37, 39, 0.96);
+  border-bottom-color: #294543;
 }
+
+.status-rail {
+  border-left: 4px solid #0f6b68;
+}
+
+.status-rail--warning { border-left-color: #c9822b; }
+.status-rail--critical { border-left-color: #c4534a; }
 
 /* Pulse badge animation */
 @keyframes pulse-subtle {

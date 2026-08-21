@@ -128,7 +128,7 @@ const DashboardPage = () => {
       {/* Welcome Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-500">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#0f6b68]">
             Patient Command Center
           </span>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
@@ -165,20 +165,20 @@ const DashboardPage = () => {
         {/* Quick Upload Action Card */}
         <Link
           to="/reports/analyze"
-          className="glass-card rounded-3xl p-6 sm:p-7 shadow-xl hover:border-sky-500/50 hover:shadow-2xl transition-all duration-200 flex flex-col justify-between group"
+          className="glass-card rounded-lg p-5 sm:p-6 hover:border-[#0f6b68] transition-colors duration-200 flex flex-col justify-between group"
         >
           <div className="space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-sky-500/15 text-sky-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-lg bg-[#dcefe9] text-[#0f6b68] flex items-center justify-center">
               <FileSearch className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-semibold text-slate-900 dark:text-white">
               Analyze Lab Report
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Upload PDF or scanned lab documents to extract parameters, detect abnormal ranges, and download summary PDFs.
             </p>
           </div>
-          <span className="text-xs text-sky-500 font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
+          <span className="text-xs text-[#0f6b68] font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
             Upload & Synthesize <ArrowRight className="w-3.5 h-3.5" />
           </span>
         </Link>
@@ -186,20 +186,20 @@ const DashboardPage = () => {
         {/* Quick Symptom Triage Card */}
         <Link
           to="/symptoms/search"
-          className="glass-card rounded-3xl p-6 sm:p-7 shadow-xl hover:border-cyan-500/50 hover:shadow-2xl transition-all duration-200 flex flex-col justify-between group"
+          className="glass-card rounded-lg p-5 sm:p-6 hover:border-[#0f6b68] transition-colors duration-200 flex flex-col justify-between group"
         >
           <div className="space-y-3">
-            <div className="w-12 h-12 rounded-2xl bg-cyan-500/15 text-cyan-400 flex items-center justify-center group-hover:scale-105 transition-transform">
+            <div className="w-10 h-10 rounded-lg bg-[#eef4f2] text-[#2f6974] flex items-center justify-center">
               <Stethoscope className="w-6 h-6" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+            <h3 className="text-base font-semibold text-slate-900 dark:text-white">
               Symptom Triage Engine
             </h3>
             <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
               Search any medical condition or symptom to get plain-language overviews, safe OTC categories, and recovery checklists.
             </p>
           </div>
-          <span className="text-xs text-cyan-500 font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
+          <span className="text-xs text-[#2f6974] font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
             Launch Symptom Triage <ArrowRight className="w-3.5 h-3.5" />
           </span>
         </Link>

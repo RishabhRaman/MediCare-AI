@@ -82,17 +82,15 @@ const LandingPage = ({ onEmergencyTrigger }) => {
   ];
 
   return (
-    <div className="space-y-24 pb-20">
+    <div className="space-y-24 pb-20 bg-[#f6f8f7] dark:bg-[#0d2527]">
       {/* Hero Section */}
       <section className="relative pt-10 sm:pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-sky-500/15 dark:bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10" />
-
         <div className="text-center max-w-3xl mx-auto space-y-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 border border-cyan-500/30 text-xs sm:text-sm font-semibold"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#dcefe9] text-[#0b5755] dark:bg-[#173b3f] dark:text-[#b8ded5] border border-[#b8ded5] text-xs sm:text-sm font-semibold"
           >
             <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
             <span>100% Free AI Clinical Assistant & Report Analyzer</span>
@@ -102,10 +100,10 @@ const LandingPage = ({ onEmergencyTrigger }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-6xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.15]"
+            className="text-4xl sm:text-6xl font-semibold tracking-tight text-[#173b3f] dark:text-white leading-[1.15]"
           >
             Clinical Intelligence.{' '}
-            <span className="bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+            <span className="text-[#0f6b68] dark:text-[#83c4b8]">
               Human Empathy.
             </span>
           </motion.h1>
@@ -176,13 +174,13 @@ const LandingPage = ({ onEmergencyTrigger }) => {
 
         {/* Tab Selector */}
         <div className="flex justify-center mb-8">
-          <div className="glass-card p-1.5 rounded-2xl flex gap-2 border border-sky-500/30">
+          <div className="glass-card p-1.5 rounded-lg flex gap-2 border border-[#b8ded5]">
             <button
               onClick={() => setActiveTab('analyzer')}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeTab === 'analyzer'
-                  ? 'bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-md'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-white'
+                  ? 'bg-[#0f6b68] text-white shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-[#0f6b68]'
               }`}
             >
               <Upload className="w-4 h-4" />
@@ -192,8 +190,8 @@ const LandingPage = ({ onEmergencyTrigger }) => {
               onClick={() => setActiveTab('bot')}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                 activeTab === 'bot'
-                  ? 'bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-md'
-                  : 'text-slate-600 dark:text-slate-400 hover:text-white'
+                  ? 'bg-[#0f6b68] text-white shadow-sm'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-[#0f6b68]'
               }`}
             >
               <MessageSquare className="w-4 h-4" />
@@ -251,8 +249,8 @@ const LandingPage = ({ onEmergencyTrigger }) => {
               body: 'Save history, check off self-care tasks, and watch biometric trends on your dashboard over time.',
             },
           ].map((item) => (
-            <div key={item.step} className="glass-card rounded-3xl p-7 space-y-3">
-              <span className="text-xs font-black text-cyan-400">{item.step}</span>
+            <div key={item.step} className="glass-card rounded-lg p-7 space-y-3">
+              <span className="text-xs font-black text-[#0f6b68]">{item.step}</span>
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">{item.title}</h3>
               <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{item.body}</p>
             </div>

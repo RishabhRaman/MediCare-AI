@@ -56,17 +56,17 @@ const Navbar = ({ onEmergencyTrigger }) => {
         <div className="flex items-center justify-between h-16 sm:h-18">
           {/* Logo Brand */}
           <Link to={isAuthenticated ? '/dashboard' : '/'} className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-500 via-cyan-500 to-emerald-400 p-0.5 shadow-md shadow-cyan-500/20 group-hover:scale-105 transition-transform duration-200">
-              <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
-                <HeartPulse className="w-5 h-5 text-cyan-400 group-hover:text-emerald-300 transition-colors" />
+            <div className="w-10 h-10 rounded-lg bg-[#173b3f] flex items-center justify-center group-hover:bg-[#0f6b68] transition-colors duration-200">
+              <div className="w-7 h-7 border border-[#83c4b8] rounded-full flex items-center justify-center">
+                <HeartPulse className="w-4 h-4 text-[#dcefe9]" />
               </div>
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="text-lg font-extrabold tracking-tight bg-gradient-to-r from-sky-500 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                <span className="text-lg font-bold tracking-tight text-[#173b3f] dark:text-white">
                   MediCare
                 </span>
-                <span className="text-xs font-bold px-1.5 py-0.5 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded bg-[#dcefe9] text-[#0b5755] border border-[#b8ded5]">
                   AI
                 </span>
               </div>
@@ -108,7 +108,7 @@ const Navbar = ({ onEmergencyTrigger }) => {
             {/* Emergency SOS Trigger */}
             <button
               onClick={() => onEmergencyTrigger && onEmergencyTrigger('Manual SOS check / high-risk symptoms alert.')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500 hover:text-white transition-all shadow-sm hover:shadow-red-500/20"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#fff2ef] text-[#a9423b] border border-[#e8b9b2] hover:bg-[#c4534a] hover:text-white transition-colors"
               title="Emergency SOS Quick Action"
             >
               <PhoneCall className="w-3.5 h-3.5" />
@@ -134,7 +134,7 @@ const Navbar = ({ onEmergencyTrigger }) => {
                   to="/profile"
                   className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors border border-slate-200/50 dark:border-slate-800"
                 >
-                  <div className="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-500/40 text-sky-400 flex items-center justify-center font-bold text-xs">
+                  <div className="w-7 h-7 rounded-lg bg-[#dcefe9] border border-[#b8ded5] text-[#0b5755] flex items-center justify-center font-bold text-xs">
                     {user?.name?.charAt(0) || 'U'}
                   </div>
                   <div className="text-left hidden lg:block">

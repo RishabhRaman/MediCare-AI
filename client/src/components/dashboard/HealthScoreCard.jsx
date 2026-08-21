@@ -1,26 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, TrendingUp, Sparkles } from 'lucide-react';
+import { ShieldCheck, Sparkles } from 'lucide-react';
 
 const HealthScoreCard = ({ score = 85, taskRate = 75, reportsCount = 2 }) => {
   const getScoreStatus = (val) => {
-    if (val >= 80) return { label: 'Optimal / Stable', color: 'text-emerald-400', bg: 'from-emerald-500/20 to-teal-500/10' };
-    if (val >= 60) return { label: 'Moderate / Attention', color: 'text-amber-400', bg: 'from-amber-500/20 to-yellow-500/10' };
-    return { label: 'Elevated Risk', color: 'text-rose-400', bg: 'from-rose-500/20 to-red-500/10' };
+    if (val >= 80) return { label: 'Optimal / Stable', color: 'text-[#3d8b72]', rail: '' };
+    if (val >= 60) return { label: 'Moderate / Attention', color: 'text-[#c9822b]', rail: 'status-rail--warning' };
+    return { label: 'Elevated Risk', color: 'text-[#c4534a]', rail: 'status-rail--critical' };
   };
 
   const status = getScoreStatus(score);
 
   return (
-    <div className={`glass-card rounded-3xl p-6 sm:p-7 shadow-xl bg-gradient-to-br ${status.bg} border border-sky-500/20 relative overflow-hidden`}>
+    <div className={`glass-card status-rail ${status.rail} rounded-lg p-6 sm:p-7 relative overflow-hidden`}>
       <div className="flex items-start justify-between">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+            <Sparkles className="w-3.5 h-3.5 text-[#0f6b68]" />
             AI Health Wellness Index
           </span>
           <div className="flex items-baseline gap-3 mt-2">
-            <span className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+            <span className="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white tracking-tight">
               {score}
             </span>
             <span className="text-sm font-semibold text-slate-500">/ 100</span>
@@ -34,14 +34,14 @@ const HealthScoreCard = ({ score = 85, taskRate = 75, reportsCount = 2 }) => {
         <div className="relative w-20 h-20 shrink-0 flex items-center justify-center">
           <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
             <path
-              className="text-slate-200 dark:text-slate-800"
+              className="text-[#d7e2df] dark:text-[#294543]"
               strokeWidth="3.5"
               stroke="currentColor"
               fill="none"
               d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
             />
             <path
-              className="text-cyan-400 transition-all duration-1000 ease-out"
+              className="text-[#0f6b68] transition-all duration-1000 ease-out"
               strokeDasharray={`${score}, 100`}
               strokeWidth="3.5"
               strokeLinecap="round"
@@ -51,7 +51,7 @@ const HealthScoreCard = ({ score = 85, taskRate = 75, reportsCount = 2 }) => {
             />
           </svg>
           <div className="absolute flex flex-col items-center">
-            <ShieldCheck className="w-6 h-6 text-cyan-400" />
+            <ShieldCheck className="w-6 h-6 text-[#0f6b68]" />
           </div>
         </div>
       </div>
