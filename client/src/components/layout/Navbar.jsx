@@ -84,7 +84,7 @@ const Navbar = ({ onEmergencyTrigger }) => {
                 onClick={() => handleSectionNavigation('features')}
                 className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors"
               >
-                Features
+                Services
               </button>
               <button
                 type="button"
@@ -98,7 +98,14 @@ const Navbar = ({ onEmergencyTrigger }) => {
                 onClick={() => handleSectionNavigation('safety')}
                 className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors"
               >
-                Safety & Privacy
+                Our approach
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSectionNavigation('faq')}
+                className="hover:text-sky-500 dark:hover:text-sky-400 transition-colors"
+              >
+                Resources
               </button>
             </nav>
           ) : null}

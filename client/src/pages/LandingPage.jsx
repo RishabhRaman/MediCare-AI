@@ -23,7 +23,7 @@ import { useAuth } from '../context/AuthContext';
 import HomeReportAnalyzer from '../components/home/HomeReportAnalyzer';
 import HomeAiAssistantBot from '../components/home/HomeAiAssistantBot';
 
-const LandingPage = ({ onEmergencyTrigger }) => {
+const LegacyLandingPage = ({ onEmergencyTrigger }) => {
   const { demoLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -356,6 +356,82 @@ const LandingPage = ({ onEmergencyTrigger }) => {
           </div>
         </div>
       </section>
+    </div>
+  );
+};
+
+const LandingPage = ({ onEmergencyTrigger }) => {
+  const { demoLogin } = useAuth();
+  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState('analyzer');
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const handleDemoAccess = async () => {
+    const res = await demoLogin();
+    if (res.success) navigate('/dashboard');
+  };
+
+  const jumpTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+
+  const trustSignals = [
+    ['01', 'Plain-language care', 'Understand reports and symptoms without the clinical fog.'],
+    ['02', 'Built around you', 'Save context, track trends, and keep your next step close.'],
+    ['03', 'Safety stays visible', 'Clear boundaries and red-flag guidance are part of every flow.'],
+  ];
+
+  const services = [
+    { number: '01', title: 'Report intelligence', description: 'Turn lab reports into a calmer, clearer starting point.', icon: FileText },
+    { number: '02', title: 'Symptom guidance', description: 'Explore what your symptoms may mean and when to seek help.', icon: Stethoscope },
+    { number: '03', title: 'Health trends', description: 'See the story in your biometrics over time, not just one result.', icon: LineChart },
+    { number: '04', title: 'Next-step planning', description: 'Move from information to practical, manageable health tasks.', icon: CheckCircle2 },
+  ];
+
+  const faqs = [
+    ['How do I book an appointment?', 'MediCare AI is currently a digital health companion. Start with a report or symptom check, then use the guidance to prepare for a conversation with your clinician.'],
+    ['Can I choose my doctor?', 'The patient portal is designed to keep your health context organized for the healthcare professional you choose.'],
+    ['Do you offer online consultations?', 'The platform supports digital health tools and an AI assistant. It does not replace an online consultation with a licensed professional.'],
+    ['How can I access my health information?', 'Create an account to save reports, recommendations, and biometric trends in your private patient portal.'],
+  ];
+
+  return (
+    <div className="premium-home pb-20">
+      <section className="premium-hero px-5 sm:px-8 lg:px-12">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_.95fr] gap-12 lg:gap-20 items-center min-h-[680px] py-16 lg:py-24">
+          <div className="max-w-2xl">
+            <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} className="eyebrow mb-7">A clearer way to care for your health</motion.p>
+            <motion.h1 initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .08 }} className="display-heading">
+              Your health,<br /><em>in better focus.</em>
+            </motion.h1>
+            <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .16 }} className="hero-copy mt-7 max-w-xl">
+              Thoughtful technology for understanding reports, exploring symptoms, and taking the next step with more confidence.
+            </motion.p>
+            <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: .24 }} className="flex flex-wrap gap-3 mt-9">
+              <Button variant="primary" size="lg" onClick={handleDemoAccess} icon={ArrowRight}>Explore the patient portal</Button>
+              <button type="button" onClick={() => jumpTo('interactive-suite')} className="premium-text-link">Try a health tool <ArrowRight className="w-4 h-4" /></button>
+            </motion.div>
+            <div className="hero-note mt-10 flex items-center gap-3 text-sm"><ShieldCheck className="w-5 h-5 text-[#3d8b72]" /><span>Information designed to support better conversations with your care team.</span></div>
+          </div>
+          <motion.div initial={{ opacity: 0, scale: .97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .7 }} className="relative">
+            <div className="hero-visual"><div className="hero-art"><div className="hero-orbit hero-orbit-one" /><div className="hero-orbit hero-orbit-two" /><div className="hero-center"><HeartPulse className="w-11 h-11" /><span>care, clearly</span></div></div><div className="hero-data hero-data-top"><span className="data-dot" />Report clarity <strong>Good</strong></div><div className="hero-data hero-data-bottom"><Activity className="w-4 h-4" /> Your health story, connected</div></div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="trust-band border-y border-[#d7e2df] px-5 sm:px-8 lg:px-12"><div className="max-w-7xl mx-auto py-7 grid md:grid-cols-[.7fr_1fr] gap-8 items-center"><p className="serif-lead text-xl">Trusted care starts with a clearer conversation.</p><div className="grid sm:grid-cols-3 gap-6">{trustSignals.map(([number, title, text]) => <div key={number} className="trust-item"><span>{number}</span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div></div></section>
+
+      <section id="features" className="premium-section px-5 sm:px-8 lg:px-12"><div className="max-w-7xl mx-auto grid lg:grid-cols-[.8fr_1.2fr] gap-14"><div><p className="eyebrow">One calm place to begin</p><h2 className="section-heading mt-4">Care designed around your needs.</h2><p className="section-copy mt-5">From the first question to the next appointment, MediCare AI helps make your health information more useful and less overwhelming.</p></div><div className="service-list">{services.map(({ number, title, description, icon: Icon }) => <button type="button" key={number} onClick={() => jumpTo('interactive-suite')} className="service-row"><span className="service-number">{number}</span><Icon className="w-5 h-5 text-[#3d8b72]" /><span className="text-left flex-1"><strong>{title}</strong><small>{description}</small></span><ArrowRight className="w-5 h-5 service-arrow" /></button>)}</div></div></section>
+
+      <section id="how-it-works" className="journey-band px-5 sm:px-8 lg:px-12"><div className="max-w-7xl mx-auto"><p className="eyebrow">How it works</p><h2 className="section-heading mt-4 max-w-lg">From uncertainty to a useful next step.</h2><div className="journey-grid mt-14">{[['01', 'Bring your question', 'Upload a report, paste clinical text, or describe a symptom in your own words.'], ['02', 'Make sense of it', 'Our tools organize the detail and explain it in plain language, with safety boundaries in view.'], ['03', 'Keep moving forward', 'Save what matters, track changes, and arrive at your next care conversation prepared.']].map(([number, title, text]) => <div key={number} className="journey-step"><span>{number}</span><h3>{title}</h3><p>{text}</p></div>)}</div></div></section>
+
+      <section id="interactive-suite" className="premium-section px-5 sm:px-8 lg:px-12"><div className="max-w-7xl mx-auto"><div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-9"><div><p className="eyebrow">Start here</p><h2 className="section-heading mt-4">A little clarity, right now.</h2></div><p className="section-copy max-w-md">Try the tools without creating an account. Your health information deserves a thoughtful first read.</p></div><div className="tool-switcher"><button type="button" className={activeTab === 'analyzer' ? 'active' : ''} onClick={() => setActiveTab('analyzer')}><Upload className="w-4 h-4" /> Analyze a report</button><button type="button" className={activeTab === 'bot' ? 'active' : ''} onClick={() => setActiveTab('bot')}><MessageSquare className="w-4 h-4" /> Ask the assistant</button></div><div className="tool-stage">{activeTab === 'analyzer' ? <HomeReportAnalyzer onEmergencyTrigger={onEmergencyTrigger} /> : <HomeAiAssistantBot onEmergencyTrigger={onEmergencyTrigger} />}</div></div></section>
+
+      <section id="safety" className="safety-section px-5 sm:px-8 lg:px-12"><div className="max-w-7xl mx-auto grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center"><div><p className="eyebrow">Designed with boundaries</p><h2 className="section-heading mt-4">Technology should make care more human.</h2></div><div className="safety-copy"><ShieldAlert className="w-7 h-7 text-[#3d8b72]" /><p>Our tools provide educational information, not diagnoses or prescriptions. Red-flag prompts encourage urgent care when symptoms may require immediate attention.</p><button type="button" onClick={() => jumpTo('faq')} className="premium-text-link mt-5">Read common questions <ArrowRight className="w-4 h-4" /></button></div></div></section>
+
+      <section id="testimonials" className="premium-section px-5 sm:px-8 lg:px-12"><div className="max-w-5xl mx-auto quote-block"><p className="eyebrow">The experience matters</p><blockquote>“Everything felt simpler from the moment I started. I could finally see what to ask next.”</blockquote><p className="quote-meta">Placeholder patient story · For demonstration purposes</p></div></section>
+
+      <section id="faq" className="faq-section px-5 sm:px-8 lg:px-12"><div className="max-w-3xl mx-auto"><p className="eyebrow">Questions, answered</p><h2 className="section-heading mt-4 mb-10">A more reassuring place to start.</h2>{faqs.map(([question, answer], index) => <div key={question} className="faq-row"><button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} aria-expanded={openFaq === index}><span>{question}</span><span className="faq-plus">{openFaq === index ? '−' : '+'}</span></button>{openFaq === index && <p>{answer}</p>}</div>)}</div></section>
+
+      <section className="closing-cta px-5 sm:px-8 lg:px-12"><div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-8"><div><p className="eyebrow text-[#b7d8c9]">A better health experience begins here</p><h2 className="display-heading text-white mt-4">Your health deserves<br /><em>a little more clarity.</em></h2></div><Button variant="secondary" size="lg" onClick={handleDemoAccess} icon={ArrowRight}>Enter the patient portal</Button></div></section>
     </div>
   );
 };
