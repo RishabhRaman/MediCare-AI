@@ -28,8 +28,8 @@ const ProfilePage = () => {
   const [name, setName] = useState(user?.name || '');
   const [profile, setProfile] = useState({
     age: user?.healthProfile?.age || '',
-    gender: user?.healthProfile?.gender || 'Male',
-    bloodType: user?.healthProfile?.bloodType || 'O+',
+    gender: user?.healthProfile?.gender || 'Select',
+    bloodType: user?.healthProfile?.bloodType || 'Select',
     height: user?.healthProfile?.height || '',
     weight: user?.healthProfile?.weight || '',
     allergies: user?.healthProfile?.allergies || [],

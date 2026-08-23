@@ -12,8 +12,8 @@ const RegisterPage = () => {
     email: '',
     password: '',
     age: '',
-    gender: 'Male',
-    bloodType: 'O+',
+    gender: '',
+    bloodType: '',
   });
   const [loading, setLoading] = useState(false);
   const { register, demoLogin } = useAuth();
@@ -117,8 +117,10 @@ const RegisterPage = () => {
                   name="gender"
                   value={formData.gender}
                   onChange={handleChange}
+                  required
                   className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
                 >
+                  <option value="" disabled>Select</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Non-Binary">Non-Binary</option>
@@ -134,8 +136,10 @@ const RegisterPage = () => {
                   name="bloodType"
                   value={formData.bloodType}
                   onChange={handleChange}
+                  required
                   className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
                 >
+                  <option value="" disabled>Select</option>
                   <option value="O+">O+</option>
                   <option value="O-">O-</option>
                   <option value="A+">A+</option>
