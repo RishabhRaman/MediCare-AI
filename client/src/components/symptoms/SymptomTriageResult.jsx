@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  AlertOctagon,
   ShieldCheck,
   Pill,
   Home,
@@ -64,11 +63,11 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
   return (
     <div className="space-y-6">
       {/* Overview Card */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6 border border-sky-500/20">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-6 border border-[#e2ebe7] dark:border-[#1c4246]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#e2ebe7] dark:border-[#1c4246]">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
-              <span className="text-xs text-sky-500 font-bold uppercase tracking-wider">
+              <span className="text-[10px] text-[#0b5755] dark:text-[#4aa497] font-bold uppercase tracking-wider">
                 Clinical Triage Evaluation
               </span>
               {result.isEmergency && (
@@ -77,11 +76,11 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
                 </Badge>
               )}
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+            <h2 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
               {result.conditionName}
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Evaluated Query: <span className="font-semibold text-slate-700 dark:text-slate-300">"{query}"</span>
+            <p className="text-xs text-[#6b8582] dark:text-[#7e9d97] mt-1">
+              Evaluated Query: <span className="font-semibold text-[#122b2e] dark:text-[#edf7f3]">"{query}"</span>
             </p>
           </div>
 
@@ -100,39 +99,39 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
         </div>
 
         {/* Clinical Overview */}
-        <div className="p-4 sm:p-5 rounded-2xl bg-sky-50/50 dark:bg-sky-950/20 border border-sky-500/20 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+        <div className="p-4 sm:p-5 rounded-2xl bg-[#f8faf8] dark:bg-[#0c1e20] border border-[#e2ebe7] dark:border-[#1c4246] text-[#122b2e] dark:text-[#edf7f3] text-sm sm:text-base leading-relaxed">
           {result.overview}
         </div>
 
         {/* Causes & Risk Factors */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          <div className="p-4 rounded-2xl bg-white dark:bg-[#102629] border border-[#e2ebe7] dark:border-[#1c4246] space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6]">
               Common Underlying Causes
             </h4>
-            <ul className="text-xs text-slate-700 dark:text-slate-300 space-y-2">
+            <ul className="text-xs text-[#122b2e] dark:text-[#edf7f3] space-y-2">
               {(result.commonCauses || []).map((cause, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-sky-500 font-bold">•</span>
+                  <span className="text-[#0b5755] dark:text-[#4aa497] font-bold">•</span>
                   <span>{cause}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+          <div className="p-4 rounded-2xl bg-white dark:bg-[#102629] border border-[#e2ebe7] dark:border-[#1c4246] space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6]">
               Suggested Specialist Consultation
             </h4>
             <div className="flex items-center gap-2.5 pt-2">
-              <div className="w-10 h-10 rounded-xl bg-sky-500/20 text-sky-400 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-xl bg-[#dcefe9] dark:bg-[#173b3f] text-[#0b5755] dark:text-[#83c4b8] flex items-center justify-center">
                 <Stethoscope className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-sm font-bold text-slate-900 dark:text-white">
+                <p className="text-sm font-bold text-[#122b2e] dark:text-white">
                   {result.doctorSpecialtyToConsult || 'General Practitioner'}
                 </p>
-                <p className="text-xs text-slate-500">Recommended clinical physician</p>
+                <p className="text-xs text-[#6b8582] dark:text-[#7e9d97]">Recommended clinical physician</p>
               </div>
             </div>
           </div>
@@ -141,16 +140,16 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
 
       {/* General OTC Medicine Categories (Strictly educational with dosage warnings) */}
       {result.generalOtcCategories && result.generalOtcCategories.length > 0 && (
-        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-4 border border-[#e2ebe7] dark:border-[#1c4246]">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
-              <Pill className="w-5 h-5 text-purple-400" />
+              <Pill className="w-5 h-5 text-[#0b5755] dark:text-[#4aa497]" />
               <div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white">
                   General Over-the-Counter (OTC) Categories
                 </h3>
-                <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Educational categorization. MediCare AI never generates exact milligram dosages. Consult a licensed pharmacist.
+                <p className="text-xs text-[#6b8582] dark:text-[#7e9d97]">
+                  Educational categorization. MediCare AI never generates exact dosages. Consult a licensed pharmacist.
                 </p>
               </div>
             </div>
@@ -160,28 +159,28 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
             {result.generalOtcCategories.map((cat, idx) => (
               <div
                 key={idx}
-                className="p-4 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-2"
+                className="p-4 rounded-2xl bg-white dark:bg-[#102629] border border-[#e2ebe7] dark:border-[#1c4246] space-y-2"
               >
                 <div className="flex items-center justify-between">
-                  <h4 className="text-sm font-bold text-purple-600 dark:text-purple-400">
+                  <h4 className="text-sm font-bold text-[#0b5755] dark:text-[#83c4b8]">
                     {cat.categoryName}
                   </h4>
                   <Badge variant="primary" size="sm">
                     OTC Class
                   </Badge>
                 </div>
-                <p className="text-xs text-slate-700 dark:text-slate-300">
-                  <strong className="text-slate-900 dark:text-white">Purpose: </strong>
+                <p className="text-xs text-[#122b2e] dark:text-[#edf7f3]">
+                  <strong className="text-[#122b2e] dark:text-white">Purpose: </strong>
                   {cat.purpose}
                 </p>
                 {cat.examples && (
-                  <p className="text-xs text-slate-600 dark:text-slate-400">
-                    <strong className="text-slate-800 dark:text-slate-200">Common Examples: </strong>
+                  <p className="text-xs text-[#425b59] dark:text-[#b4cbc6]">
+                    <strong className="text-[#122b2e] dark:text-white">Common Examples: </strong>
                     {cat.examples.join(', ')}
                   </p>
                 )}
                 {cat.precautions && (
-                  <p className="text-[11px] text-amber-700 dark:text-amber-400/90 italic pt-1 border-t border-slate-100 dark:border-slate-800">
+                  <p className="text-[11px] text-[#b45309] dark:text-[#fde047] italic pt-1 border-t border-[#e2ebe7] dark:border-[#1c4246]">
                     ⚠️ Safety Note: {cat.precautions}
                   </p>
                 )}
@@ -192,22 +191,22 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
       )}
 
       {/* Home-Care Protocols & Recovery Checklist */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-6 border border-[#e2ebe7] dark:border-[#1c4246]">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-center gap-2.5">
-            <Home className="w-5 h-5 text-emerald-400" />
+            <Home className="w-5 h-5 text-[#3d8b72]" />
             <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+              <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white">
                 Actionable Home-Care & Recovery Checklist
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-[#6b8582] dark:text-[#7e9d97]">
                 Mark off self-care tasks as you complete them or sync to your personal health dashboard.
               </p>
             </div>
           </div>
 
           <Button
-            variant="emerald"
+            variant="primary"
             size="sm"
             onClick={handleSyncToMyTasks}
             loading={isAddingTasks}
@@ -225,15 +224,15 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
               onClick={() => toggleTask(idx)}
               className={`flex items-start gap-3 p-3.5 rounded-2xl border cursor-pointer transition-all duration-150 ${
                 item.isCompleted
-                  ? 'bg-emerald-50/40 dark:bg-emerald-950/20 border-emerald-500/40 text-slate-400 line-through'
-                  : 'bg-white dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:border-sky-500/40 text-slate-800 dark:text-slate-200'
+                  ? 'bg-[#eaf5f0]/40 dark:bg-[#13382c]/20 border-[#c0e6d6] dark:border-[#1f5c49] text-[#6b8582] line-through'
+                  : 'bg-white dark:bg-[#102629] border-[#e2ebe7] dark:border-[#1c4246] hover:border-[#b8ded5] text-[#122b2e] dark:text-[#edf7f3]'
               }`}
             >
               <div
                 className={`w-5 h-5 rounded-lg flex items-center justify-center shrink-0 mt-0.5 border ${
                   item.isCompleted
-                    ? 'bg-emerald-500 border-emerald-500 text-white'
-                    : 'border-slate-300 dark:border-slate-700'
+                    ? 'bg-[#10b981] border-[#10b981] text-white'
+                    : 'border-[#d6e4df] dark:border-[#1c4246]'
                 }`}
               >
                 {item.isCompleted && <Check className="w-3.5 h-3.5" />}
@@ -241,7 +240,7 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
               <div className="flex-1 text-xs sm:text-sm">
                 <span>{item.task}</span>
                 {item.timeline && (
-                  <span className="ml-2 text-[10px] px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 no-underline inline-block">
+                  <span className="ml-2 text-[10px] px-2 py-0.5 rounded-md bg-[#f3f7f5] dark:bg-[#143236] text-[#6b8582] dark:text-[#7e9d97] no-underline inline-block">
                     {item.timeline}
                   </span>
                 )}
@@ -253,12 +252,12 @@ const SymptomTriageResult = ({ result, query, searchId, onAddTasks }) => {
 
       {/* Red-Flag Urgent Warnings */}
       {result.redFlags && result.redFlags.length > 0 && (
-        <div className="p-6 rounded-3xl bg-rose-50/60 dark:bg-rose-950/30 border border-rose-500/40 space-y-3">
-          <div className="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold text-sm">
+        <div className="p-6 rounded-3xl bg-[#fef2f2] dark:bg-[#451010] border border-red-300 dark:border-red-800 space-y-3">
+          <div className="flex items-center gap-2 text-[#991b1b] dark:text-[#fca5a5] font-bold text-sm">
             <AlertTriangle className="w-5 h-5" />
             <span>Red-Flag Warning Symptoms (Seek Urgent Medical Evaluation)</span>
           </div>
-          <ul className="text-xs text-rose-950 dark:text-rose-200 space-y-2">
+          <ul className="text-xs text-[#7f1d1d] dark:text-[#fecaca] space-y-2">
             {result.redFlags.map((flag, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="font-bold">•</span>

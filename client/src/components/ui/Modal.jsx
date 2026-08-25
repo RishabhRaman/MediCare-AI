@@ -36,34 +36,35 @@ const Modal = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity"
+            className="fixed inset-0 bg-[#091617]/75 backdrop-blur-md transition-opacity"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ duration: 0.2 }}
-            className={`relative w-full ${maxWidth} glass-card rounded-3xl shadow-2xl p-6 sm:p-8 z-10 my-8 overflow-hidden`}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className={`relative w-full ${maxWidth} bg-white dark:bg-[#102629] border border-[#d6e4df] dark:border-[#1c4246] rounded-3xl shadow-elevation p-6 sm:p-8 z-10 my-8 overflow-hidden`}
           >
             {/* Header */}
-            <div className="flex items-start justify-between pb-4 mb-4 border-b border-slate-200 dark:border-slate-800">
+            <div className="flex items-start justify-between pb-4 mb-5 border-b border-[#e2ebe7] dark:border-[#1c4246]">
               <div>
                 {title && (
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="text-xl font-bold font-serif-heading text-[#122b2e] dark:text-[#edf7f3]">
                     {title}
                   </h3>
                 )}
                 {subtitle && (
-                  <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-1">
                     {subtitle}
                   </p>
                 )}
               </div>
               <button
                 onClick={onClose}
-                className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1.5 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="text-[#6b8582] hover:text-[#122b2e] dark:text-[#7e9d97] dark:hover:text-white p-1.5 rounded-xl hover:bg-[#f3f7f5] dark:hover:bg-[#143236] transition-colors"
+                aria-label="Close modal"
               >
                 <X className="w-5 h-5" />
               </button>

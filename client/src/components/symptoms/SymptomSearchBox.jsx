@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Search, Sparkles, AlertCircle, ArrowRight } from 'lucide-react';
+import { Search, Sparkles } from 'lucide-react';
 import Button from '../ui/Button';
 
 const quickSymptoms = [
-  'Acid reflux & burning chest after dinner',
-  'Throbbing migraine with light sensitivity',
-  'Persistent dry cough with mild fever',
-  'Lower back dull ache after exercise',
-  'Sudden dizziness & fatigue upon standing',
-  'Seasonal sneezing with itchy eyes',
+  'Acid reflux & burning sensation after meals',
+  'Throbbing tension headache with light sensitivity',
+  'Persistent dry cough with low-grade fever',
+  'Lower back muscle tightness after exercise',
+  'Sudden lightheadedness upon standing up',
+  'Seasonal sneezing and scratchy throat',
 ];
 
 const SymptomSearchBox = ({ onSearch, isSearching }) => {
@@ -26,25 +26,25 @@ const SymptomSearchBox = ({ onSearch, isSearching }) => {
   };
 
   return (
-    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-6">
       <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
-          AI Symptom Triage & Condition Search
+        <h2 className="text-xl sm:text-2xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
+          Symptom Triage & Clinical Assessment
         </h2>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
-          Describe your symptoms in natural language to receive clinical insights, general OTC categories, and home-care recovery steps.
+        <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-1">
+          Describe what you are experiencing in your own words to receive structured insights, safe OTC categories, and home-care recovery steps.
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="relative">
         <div className="relative flex items-center">
-          <Search className="absolute left-4 w-5 h-5 text-slate-400" />
+          <Search className="absolute left-4 w-5 h-5 text-[#6b8582]" />
           <input
             type="text"
             placeholder="Describe what you are experiencing (e.g. Sharp throat pain and fever for 2 days)..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full rounded-2xl text-sm sm:text-base border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/90 pl-12 pr-32 py-3.5 sm:py-4 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/40 shadow-inner"
+            className="w-full rounded-2xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] pl-12 pr-32 py-3.5 sm:py-4 text-[#122b2e] dark:text-[#edf7f3] placeholder-[#7e9d97] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
           />
           <div className="absolute right-2">
             <Button
@@ -54,9 +54,8 @@ const SymptomSearchBox = ({ onSearch, isSearching }) => {
               disabled={!query.trim() || isSearching}
               loading={isSearching}
               icon={Sparkles}
-              className="shadow-md shadow-sky-500/20"
             >
-              Analyze
+              Triage
             </Button>
           </div>
         </div>
@@ -64,8 +63,8 @@ const SymptomSearchBox = ({ onSearch, isSearching }) => {
 
       {/* Common Symptom Chips */}
       <div>
-        <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2.5 uppercase tracking-wider">
-          Quick Symptom Presets:
+        <p className="text-[10px] font-bold text-[#6b8582] dark:text-[#7e9d97] mb-2.5 uppercase tracking-wider">
+          Suggested Symptom Presets:
         </p>
         <div className="flex flex-wrap gap-2">
           {quickSymptoms.map((symptom, idx) => (
@@ -73,7 +72,7 @@ const SymptomSearchBox = ({ onSearch, isSearching }) => {
               key={idx}
               type="button"
               onClick={() => handleChipClick(symptom)}
-              className="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-100 dark:bg-slate-800/80 hover:bg-sky-50 dark:hover:bg-sky-950/60 hover:text-sky-600 dark:hover:text-sky-400 hover:border-sky-500/40 border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-300 transition-all text-left"
+              className="px-3 py-1.5 rounded-xl text-xs font-medium bg-[#f8faf8] dark:bg-[#0c1e20] hover:bg-[#dcefe9] dark:hover:bg-[#173b3f] hover:text-[#0b5755] dark:hover:text-[#83c4b8] border border-[#e2ebe7] dark:border-[#1c4246] text-[#425b59] dark:text-[#b4cbc6] transition-all text-left cursor-pointer"
             >
               {symptom}
             </button>

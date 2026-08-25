@@ -9,7 +9,7 @@ import {
   Activity,
   UserCog,
   Sparkles,
-  ShieldAlert,
+  ShieldCheck,
   ChevronRight,
 } from 'lucide-react';
 
@@ -54,11 +54,11 @@ const navItems = [
 
 const Sidebar = () => {
   return (
-    <aside className="w-64 shrink-0 hidden md:block border-r border-[#d7e2df] dark:border-[#294543] bg-[#eef4f2] dark:bg-[#0d2527] min-h-[calc(100vh-4rem)] p-4 transition-all duration-200">
+    <aside className="w-64 shrink-0 hidden md:block border-r border-[#e2ebe7] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] min-h-[calc(100vh-5rem)] p-4 transition-colors duration-200">
       {/* Navigation Group */}
       <div className="space-y-1">
-        <p className="px-3 text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-2">
-          Clinical Portal
+        <p className="px-3 text-[10px] font-bold uppercase tracking-wider text-[#6b8582] dark:text-[#7e9d97] mb-2.5">
+          Patient Portal
         </p>
 
         {navItems.map((item) => {
@@ -68,19 +68,19 @@ const Sidebar = () => {
               key={item.path}
               to={item.path}
               className={({ isActive }) =>
-                `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 group ${
+                `flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-150 group ${
                   isActive
-                    ? 'bg-white dark:bg-[#173b3f] text-[#0b5755] dark:text-[#b8ded5] border-l-4 border-[#0f6b68] shadow-sm'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-850'
+                    ? 'bg-white dark:bg-[#102629] text-[#0b5755] dark:text-[#83c4b8] shadow-subtle border border-[#d6e4df] dark:border-[#1c4246]'
+                    : 'text-[#425b59] dark:text-[#b4cbc6] hover:text-[#122b2e] dark:hover:text-white hover:bg-white/60 dark:hover:bg-[#143236]'
                 }`
               }
             >
               <div className="flex items-center gap-3">
-                <Icon className="w-4 h-4 transition-colors group-hover:text-sky-500 dark:group-hover:text-sky-400" />
+                <Icon className="w-4 h-4 transition-colors group-hover:text-[#0b5755] dark:group-hover:text-[#4aa497]" />
                 <span>{item.name}</span>
               </div>
               {item.badge && (
-                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-[#dcefe9] text-[#0b5755] dark:bg-[#173b3f] dark:text-[#83c4b8] border border-[#b8ded5] dark:border-[#2c5f64]">
                   {item.badge}
                 </span>
               )}
@@ -90,17 +90,17 @@ const Sidebar = () => {
       </div>
 
       {/* Safety Compliance & AI Badge Card */}
-      <div className="mt-8 p-3.5 rounded-lg bg-[#173b3f] border border-[#416360] text-slate-300 space-y-2">
-        <div className="flex items-center gap-2 text-sky-400 text-xs font-bold">
+      <div className="mt-8 p-4 rounded-2xl bg-white dark:bg-[#102629] border border-[#e2ebe7] dark:border-[#1c4246] text-[#425b59] dark:text-[#b4cbc6] space-y-2 shadow-subtle">
+        <div className="flex items-center gap-2 text-[#0b5755] dark:text-[#4aa497] text-xs font-bold">
           <Sparkles className="w-4 h-4" />
-          <span>AI Clinical Intelligence</span>
+          <span>Clinical Intelligence</span>
         </div>
-        <p className="text-[11px] text-slate-400 leading-relaxed">
-          Reports and symptoms are synthesized with structured OCR & medical models.
+        <p className="text-[11px] text-[#6b8582] dark:text-[#7e9d97] leading-relaxed">
+          Diagnostic OCR and symptom triage synthesize structured findings with active red-flag protocols.
         </p>
-        <div className="pt-1 flex items-center gap-1.5 text-[10px] text-slate-500 font-medium">
-          <ShieldAlert className="w-3.5 h-3.5 text-emerald-400" />
-          <span>Encrypted & Privacy-First</span>
+        <div className="pt-1 flex items-center gap-1.5 text-[10px] text-[#3d8b72] font-semibold">
+          <ShieldCheck className="w-3.5 h-3.5" />
+          <span>HIPAA-Inspired Privacy</span>
         </div>
       </div>
     </aside>

@@ -14,34 +14,34 @@ const Button = ({
   ...props
 }) => {
   const baseClasses =
-    'inline-flex items-center justify-center font-semibold rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none';
+    'inline-flex items-center justify-center font-semibold tracking-tight transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer select-none';
 
   const variants = {
     primary:
-      'bg-[#0f6b68] hover:bg-[#0b5755] text-white shadow-sm focus:ring-[#0f6b68] border border-[#0f6b68]',
+      'bg-[#0b5755] hover:bg-[#084744] text-white shadow-subtle hover:shadow-card focus-visible:ring-[#0b5755] border border-[#084744] dark:bg-[#4aa497] dark:hover:bg-[#83c4b8] dark:text-[#091617] dark:border-[#4aa497]',
     secondary:
-      'bg-white hover:bg-[#f1f8f6] text-[#173b3f] dark:bg-[#173b3f] dark:hover:bg-[#21494a] dark:text-white border border-[#c7d8d4] dark:border-[#416360] focus:ring-[#0f6b68]',
+      'bg-white hover:bg-[#f3f7f5] text-[#122b2e] dark:bg-[#102629] dark:hover:bg-[#153438] dark:text-[#edf7f3] border border-[#d6e4df] dark:border-[#1c4246] shadow-subtle focus-visible:ring-[#0b5755]',
     emerald:
-      'bg-[#3d8b72] hover:bg-[#32755f] text-white shadow-sm focus:ring-[#3d8b72] border border-[#3d8b72]',
+      'bg-[#3d8b72] hover:bg-[#2e6d59] text-white shadow-subtle focus-visible:ring-[#3d8b72] border border-[#32755f]',
     danger:
-      'bg-[#c4534a] hover:bg-[#a9423b] text-white shadow-sm focus:ring-[#c4534a] border border-[#c4534a]',
+      'bg-[#b91c1c] hover:bg-[#991b1b] text-white shadow-subtle focus-visible:ring-[#dc2626] border border-[#991b1b]',
     outline:
-      'border border-[#0f6b68] hover:bg-[#dcefe9] text-[#0b5755] dark:text-[#83c4b8] dark:hover:bg-[#173b3f] focus:ring-[#0f6b68]',
+      'border border-[#0b5755] hover:bg-[#dcefe9]/60 text-[#0b5755] dark:border-[#4aa497] dark:text-[#83c4b8] dark:hover:bg-[#173b3f]/70 focus-visible:ring-[#0b5755]',
     ghost:
-      'text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-100 dark:hover:bg-slate-800/60',
+      'text-[#425b59] hover:text-[#122b2e] hover:bg-[#f3f7f5] dark:text-[#b4cbc6] dark:hover:text-white dark:hover:bg-[#143236]',
   };
 
   const sizes = {
-    sm: 'px-3 py-1.5 text-xs gap-1.5',
-    md: 'px-4 py-2 text-sm gap-2',
-    lg: 'px-6 py-3 text-base gap-2.5',
-    xl: 'px-8 py-3.5 text-lg gap-3',
+    sm: 'px-3 py-1.5 text-xs rounded-lg gap-1.5 min-h-[34px]',
+    md: 'px-4 py-2 text-sm rounded-xl gap-2 min-h-[42px]',
+    lg: 'px-6 py-3 text-base rounded-xl gap-2.5 min-h-[48px]',
+    xl: 'px-8 py-3.5 text-base rounded-2xl gap-3 min-h-[54px] font-bold',
   };
 
   return (
     <motion.button
-      whileHover={!disabled && !loading ? { scale: 1.015 } : {}}
-      whileTap={!disabled && !loading ? { scale: 0.98 } : {}}
+      whileHover={!disabled && !loading ? { scale: 1.012, y: -1 } : {}}
+      whileTap={!disabled && !loading ? { scale: 0.985, y: 0 } : {}}
       type={type}
       disabled={disabled || loading}
       onClick={onClick}
@@ -50,7 +50,7 @@ const Button = ({
     >
       {loading ? (
         <svg
-          className="animate-spin -ml-1 mr-2 h-4 w-4 text-current"
+          className="animate-spin -ml-0.5 mr-2 h-4 w-4 text-current"
           fill="none"
           viewBox="0 0 24 24"
         >
@@ -69,7 +69,7 @@ const Button = ({
           ></path>
         </svg>
       ) : Icon ? (
-        <Icon className={size === 'sm' ? 'w-3.5 h-3.5' : size === 'lg' ? 'w-5 h-5' : 'w-4 h-4'} />
+        <Icon className={size === 'sm' ? 'w-3.5 h-3.5' : size === 'lg' || size === 'xl' ? 'w-5 h-5' : 'w-4 h-4'} />
       ) : null}
       {children}
     </motion.button>

@@ -24,7 +24,7 @@ const GoogleAuthButton = ({ label = 'Continue with Google' }) => {
     <button
       type="button"
       onClick={handleClick}
-      className="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+      className="w-full inline-flex items-center justify-center gap-2.5 rounded-xl border border-[#d6e4df] dark:border-[#1c4246] bg-white dark:bg-[#0c1e20] px-4 py-2.5 text-xs sm:text-sm font-semibold text-[#122b2e] dark:text-[#edf7f3] hover:bg-[#f8faf8] dark:hover:bg-[#143236] transition-colors cursor-pointer"
     >
       <svg className="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true">
         <path

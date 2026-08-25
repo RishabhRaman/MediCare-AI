@@ -6,9 +6,6 @@ import {
   Calendar,
   Sparkles,
   Layers,
-  Heart,
-  Droplet,
-  Scale,
 } from 'lucide-react';
 import api from '../services/api';
 import MetricsChart from '../components/dashboard/MetricsChart';
@@ -107,13 +104,13 @@ const MetricsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-500">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#0b5755] dark:text-[#4aa497]">
             Biometric Monitoring
           </span>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
             Health Metrics & Vital Signs
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-0.5">
             Longitudinal tracking of blood glucose, lipid parameters, blood pressure, and weight.
           </p>
         </div>
@@ -123,7 +120,6 @@ const MetricsPage = () => {
           size="md"
           onClick={() => setIsLogModalOpen(true)}
           icon={Plus}
-          className="shadow-md shadow-sky-500/20"
         >
           Log Measurement
         </Button>
@@ -136,15 +132,15 @@ const MetricsPage = () => {
       />
 
       {/* Measurement History Table */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-4 border border-[#e2ebe7] dark:border-[#1c4246]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <Layers className="w-5 h-5 text-sky-500" />
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+            <Layers className="w-5 h-5 text-[#0b5755] dark:text-[#4aa497]" />
+            <h3 className="text-lg sm:text-xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
               Recorded Biomarker Logs
             </h3>
           </div>
-          <span className="text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
+          <span className="text-xs text-[#6b8582] dark:text-[#7e9d97] bg-[#f3f7f5] dark:bg-[#143236] px-3 py-1 rounded-full border border-[#d7e4e0] dark:border-[#1c4246]">
             {metrics.length} Total Logs
           </span>
         </div>
@@ -152,13 +148,13 @@ const MetricsPage = () => {
         {loading ? (
           <SkeletonTable rows={4} />
         ) : metrics.length === 0 ? (
-          <p className="text-xs text-slate-500 text-center py-6">
+          <p className="text-xs text-[#6b8582] dark:text-[#7e9d97] text-center py-6">
             No biomarker measurements logged yet.
           </p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-slate-100/80 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 text-xs uppercase tracking-wider font-semibold border-b border-slate-200 dark:border-slate-800">
+              <thead className="bg-[#f8faf8] dark:bg-[#0c1e20] text-[#425b59] dark:text-[#b4cbc6] text-[11px] uppercase tracking-wider font-semibold border-b border-[#e2ebe7] dark:border-[#1c4246]">
                 <tr>
                   <th className="px-4 py-3.5 rounded-l-xl">Biomarker</th>
                   <th className="px-4 py-3.5">Measured Value</th>
@@ -168,18 +164,18 @@ const MetricsPage = () => {
                   <th className="px-4 py-3.5 text-right rounded-r-xl">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-200 dark:divide-slate-800/80">
+              <tbody className="divide-y divide-[#e2ebe7] dark:divide-[#1c4246]">
                 {metrics.map((item) => (
                   <tr
                     key={item._id}
-                    className="hover:bg-slate-50 dark:hover:bg-slate-850/50 transition-colors"
+                    className="hover:bg-[#f8faf8] dark:hover:bg-[#143236]/40 transition-colors"
                   >
-                    <td className="px-4 py-3.5 font-semibold text-slate-900 dark:text-white">
+                    <td className="px-4 py-3.5 font-semibold text-[#122b2e] dark:text-white">
                       {item.metricName}
                     </td>
-                    <td className="px-4 py-3.5 font-bold text-slate-800 dark:text-slate-200">
+                    <td className="px-4 py-3.5 font-bold text-[#122b2e] dark:text-[#edf7f3]">
                       {item.value} {item.secondaryValue ? `/ ${item.secondaryValue}` : ''}{' '}
-                      <span className="text-xs font-normal text-slate-500">{item.unit}</span>
+                      <span className="text-xs font-normal text-[#6b8582]">{item.unit}</span>
                     </td>
                     <td className="px-4 py-3.5">
                       <Badge
@@ -198,20 +194,20 @@ const MetricsPage = () => {
                         {(item.status || 'normal').toUpperCase()}
                       </Badge>
                     </td>
-                    <td className="px-4 py-3.5 text-slate-500">
+                    <td className="px-4 py-3.5 text-[#6b8582] dark:text-[#7e9d97]">
                       {new Date(item.date).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                         year: 'numeric',
                       })}
                     </td>
-                    <td className="px-4 py-3.5 text-slate-500 max-w-xs truncate">
+                    <td className="px-4 py-3.5 text-[#6b8582] dark:text-[#7e9d97] max-w-xs truncate">
                       {item.notes || '—'}
                     </td>
                     <td className="px-4 py-3.5 text-right">
                       <button
                         onClick={() => handleDelete(item._id)}
-                        className="text-slate-400 hover:text-red-500 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                        className="text-[#6b8582] hover:text-red-500 p-1.5 rounded-lg hover:bg-[#f3f7f5] dark:hover:bg-[#143236] transition-colors cursor-pointer"
                         title="Delete log"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -234,13 +230,13 @@ const MetricsPage = () => {
       >
         <form onSubmit={handleLogSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
               Measurement Type
             </label>
             <select
               value={logFormData.metricType}
               onChange={(e) => handleMetricTypeChange(e.target.value)}
-              className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100"
+              className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
             >
               <option value="blood_glucose">Fasting Blood Glucose (mg/dL)</option>
               <option value="total_cholesterol">Total Cholesterol (mg/dL)</option>

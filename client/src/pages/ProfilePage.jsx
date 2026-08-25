@@ -10,8 +10,6 @@ import {
   X,
   PhoneCall,
   Save,
-  Sun,
-  Moon,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
@@ -148,21 +146,21 @@ const ProfilePage = () => {
     <div className="space-y-8 max-w-4xl mx-auto pb-10">
       {/* Header */}
       <div>
-        <span className="text-xs font-bold uppercase tracking-wider text-sky-500">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-[#0b5755] dark:text-[#4aa497]">
           Patient Health Profile
         </span>
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+        <h1 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
           Profile & Clinical Settings
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+        <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-0.5">
           Configure allergies, medications, emergency contacts, and personal health metrics.
         </p>
       </div>
 
       <form onSubmit={handleSaveProfile} className="space-y-6">
         {/* Basic Demographics & BMI */}
-        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800">
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-6 border border-[#e2ebe7] dark:border-[#1c4246]">
+          <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white pb-3 border-b border-[#e2ebe7] dark:border-[#1c4246]">
             Personal & Biometric Demographics
           </h3>
 
@@ -176,13 +174,13 @@ const ProfilePage = () => {
             />
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
                 Biological Sex / Gender
               </label>
               <select
                 value={profile.gender}
                 onChange={(e) => setProfile({ ...profile, gender: e.target.value })}
-                className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100"
+                className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               >
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -199,13 +197,13 @@ const ProfilePage = () => {
             />
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
                 Blood Group
               </label>
               <select
                 value={profile.bloodType}
                 onChange={(e) => setProfile({ ...profile, bloodType: e.target.value })}
-                className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100"
+                className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               >
                 <option value="O+">O+</option>
                 <option value="O-">O-</option>
@@ -239,12 +237,12 @@ const ProfilePage = () => {
 
           {/* BMI Live Indicator */}
           {bmi && (
-            <div className="p-4 rounded-2xl bg-sky-50/50 dark:bg-sky-950/20 border border-sky-500/20 flex items-center justify-between">
+            <div className="p-4 rounded-2xl bg-[#dcefe9]/50 dark:bg-[#173b3f]/40 border border-[#b8ded5] dark:border-[#2c5f64] flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold text-sky-600 dark:text-sky-400">
+                <p className="text-xs font-bold text-[#0b5755] dark:text-[#83c4b8]">
                   Calculated Body Mass Index (BMI)
                 </p>
-                <p className="text-xl font-black text-slate-900 dark:text-white mt-0.5">
+                <p className="text-xl font-bold font-serif-heading text-[#122b2e] dark:text-white mt-0.5">
                   {bmi} kg/m²
                 </p>
               </div>
@@ -258,27 +256,27 @@ const ProfilePage = () => {
         </div>
 
         {/* Clinical History & Chips (Allergies, Medications, Conditions) */}
-        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-          <h3 className="text-lg font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800">
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-6 border border-[#e2ebe7] dark:border-[#1c4246]">
+          <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white pb-3 border-b border-[#e2ebe7] dark:border-[#1c4246]">
             Known Allergies, Medications & Chronic Conditions
           </h3>
 
           {/* Allergies */}
           <div className="space-y-2">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6]">
               Drug & Food Allergies
             </label>
             <div className="flex flex-wrap gap-2 mb-2">
               {profile.allergies.map((allergy, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 text-xs font-semibold"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#fef2f2] dark:bg-[#451010] text-[#991b1b] dark:text-[#fca5a5] border border-[#fecaca] dark:border-[#7f1d1d] text-xs font-semibold"
                 >
                   {allergy}
                   <button
                     type="button"
                     onClick={() => handleRemoveChip('allergies', allergy)}
-                    className="hover:text-rose-900"
+                    className="hover:text-red-900 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -295,7 +293,7 @@ const ProfilePage = () => {
                   e.key === 'Enter' &&
                   (e.preventDefault(), handleAddChip('allergies', newAllergy, setNewAllergy))
                 }
-                className="flex-1 rounded-xl text-xs sm:text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2 text-slate-900 dark:text-slate-100"
+                className="flex-1 rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2 text-[#122b2e] dark:text-[#edf7f3] placeholder-[#7e9d97] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               />
               <Button
                 variant="secondary"
@@ -310,20 +308,20 @@ const ProfilePage = () => {
 
           {/* Chronic Conditions */}
           <div className="space-y-2 pt-3">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6]">
               Pre-existing / Chronic Conditions
             </label>
             <div className="flex flex-wrap gap-2 mb-2">
               {profile.chronicConditions.map((cond, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 text-xs font-semibold"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#fffbeb] dark:bg-[#45280b] text-[#92400e] dark:text-[#fde047] border border-[#fde68a] dark:border-[#78350f] text-xs font-semibold"
                 >
                   {cond}
                   <button
                     type="button"
                     onClick={() => handleRemoveChip('chronicConditions', cond)}
-                    className="hover:text-amber-900"
+                    className="hover:text-amber-900 cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -341,7 +339,7 @@ const ProfilePage = () => {
                   (e.preventDefault(),
                   handleAddChip('chronicConditions', newCondition, setNewCondition))
                 }
-                className="flex-1 rounded-xl text-xs sm:text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2 text-slate-900 dark:text-slate-100"
+                className="flex-1 rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2 text-[#122b2e] dark:text-[#edf7f3] placeholder-[#7e9d97] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               />
               <Button
                 variant="secondary"
@@ -356,20 +354,20 @@ const ProfilePage = () => {
 
           {/* Ongoing Medications */}
           <div className="space-y-2 pt-3">
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6]">
               Current Medications & Supplements
             </label>
             <div className="flex flex-wrap gap-2 mb-2">
               {profile.currentMedications.map((med, idx) => (
                 <span
                   key={idx}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800 text-xs font-semibold"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-[#dcefe9] dark:bg-[#173b3f] text-[#0b5755] dark:text-[#83c4b8] border border-[#b8ded5] dark:border-[#2c5f64] text-xs font-semibold"
                 >
                   {med}
                   <button
                     type="button"
                     onClick={() => handleRemoveChip('currentMedications', med)}
-                    className="hover:text-sky-900"
+                    className="hover:text-[#0b5755] cursor-pointer"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -387,7 +385,7 @@ const ProfilePage = () => {
                   (e.preventDefault(),
                   handleAddChip('currentMedications', newMedication, setNewMedication))
                 }
-                className="flex-1 rounded-xl text-xs sm:text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2 text-slate-900 dark:text-slate-100"
+                className="flex-1 rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2 text-[#122b2e] dark:text-[#edf7f3] placeholder-[#7e9d97] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               />
               <Button
                 variant="secondary"
@@ -402,10 +400,10 @@ const ProfilePage = () => {
         </div>
 
         {/* Emergency Contact */}
-        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-4">
-          <div className="flex items-center gap-2 pb-3 border-b border-slate-200 dark:border-slate-800">
-            <PhoneCall className="w-5 h-5 text-red-400" />
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-4 border border-[#e2ebe7] dark:border-[#1c4246]">
+          <div className="flex items-center gap-2 pb-3 border-b border-[#e2ebe7] dark:border-[#1c4246]">
+            <PhoneCall className="w-5 h-5 text-red-500" />
+            <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white">
               Emergency Contact Information
             </h3>
           </div>
@@ -460,7 +458,7 @@ const ProfilePage = () => {
             size="lg"
             loading={isSaving}
             icon={Save}
-            className="shadow-lg shadow-sky-500/20 px-8"
+            className="px-8"
           >
             Save Health Profile
           </Button>
@@ -468,17 +466,17 @@ const ProfilePage = () => {
       </form>
 
       {/* Privacy, Data Export & Account Settings */}
-      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
-        <h3 className="text-lg font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800">
+      <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation space-y-6 border border-[#e2ebe7] dark:border-[#1c4246]">
+        <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white pb-3 border-b border-[#e2ebe7] dark:border-[#1c4246]">
           Data Privacy & Account Controls
         </h3>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-[#f8faf8] dark:bg-[#0c1e20] border border-[#e2ebe7] dark:border-[#1c4246]">
           <div>
-            <p className="text-sm font-bold text-slate-900 dark:text-white">
+            <p className="text-sm font-bold text-[#122b2e] dark:text-white">
               Export Medical Data (JSON)
             </p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-[#6b8582] dark:text-[#7e9d97]">
               Download your complete clinical history, analyzed reports, and biomarker records.
             </p>
           </div>
@@ -487,12 +485,12 @@ const ProfilePage = () => {
           </Button>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-rose-50/50 dark:bg-rose-950/20 border border-rose-500/30">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-2xl bg-[#fef2f2] dark:bg-[#451010]/50 border border-[#fecaca] dark:border-[#7f1d1d]">
           <div>
-            <p className="text-sm font-bold text-rose-600 dark:text-rose-400">
+            <p className="text-sm font-bold text-[#991b1b] dark:text-[#fca5a5]">
               Delete Account & Records
             </p>
-            <p className="text-xs text-rose-900/70 dark:text-rose-300/70">
+            <p className="text-xs text-[#b91c1c] dark:text-[#fca5a5]/80">
               Permanently purge all patient profile data, uploaded lab documents, and search history.
             </p>
           </div>

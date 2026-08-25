@@ -11,13 +11,13 @@ const Card = ({
 }) => {
   return (
     <motion.div
-      whileHover={hover ? { y: -2, transition: { duration: 0.15 } } : {}}
+      whileHover={hover ? { y: -2, transition: { duration: 0.15, ease: [0.16, 1, 0.3, 1] } } : {}}
       onClick={onClick}
       className={`rounded-2xl transition-all duration-200 ${
         glass
           ? 'glass-card'
-          : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800'
-      } ${hover ? 'hover:shadow-lg hover:border-sky-500/30' : ''} ${className}`}
+          : 'bg-white dark:bg-[#102629] border border-[#e2ebe7] dark:border-[#1c4246] shadow-card'
+      } ${hover ? 'hover:shadow-card-hover hover:border-[#b8ded5] dark:hover:border-[#2c5f64]' : ''} ${className}`}
       {...props}
     >
       {children}

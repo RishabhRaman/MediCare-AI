@@ -9,8 +9,6 @@ import {
   Plus,
   ArrowRight,
   Sparkles,
-  TrendingUp,
-  AlertCircle,
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import api from '../services/api';
@@ -128,21 +126,21 @@ const DashboardPage = () => {
       {/* Welcome Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-[#0f6b68]">
-            Patient Command Center
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#0b5755] dark:text-[#4aa497]">
+            Patient Portal Command
           </span>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
             Hello, {user?.name || 'Patient'}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
-            Your clinical summary and vital health trends are up to date.
+          <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-0.5">
+            Your clinical summary and vital biomarker trajectories are up to date.
           </p>
         </div>
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-2.5">
           <Link to="/reports/analyze">
-            <Button variant="primary" size="md" icon={FileSearch} className="shadow-md shadow-sky-500/20">
+            <Button variant="primary" size="md" icon={FileSearch}>
               Analyze Report
             </Button>
           </Link>
@@ -165,20 +163,20 @@ const DashboardPage = () => {
         {/* Quick Upload Action Card */}
         <Link
           to="/reports/analyze"
-          className="glass-card rounded-lg p-5 sm:p-6 hover:border-[#0f6b68] transition-colors duration-200 flex flex-col justify-between group"
+          className="glass-card rounded-3xl p-6 hover:border-[#b8ded5] transition-all flex flex-col justify-between group shadow-card"
         >
           <div className="space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-[#dcefe9] text-[#0f6b68] flex items-center justify-center">
-              <FileSearch className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-[#dcefe9] dark:bg-[#173b3f] text-[#0b5755] dark:text-[#83c4b8] flex items-center justify-center">
+              <FileSearch className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold font-serif-heading text-[#122b2e] dark:text-white">
               Analyze Lab Report
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs text-[#425b59] dark:text-[#b4cbc6] leading-relaxed">
               Upload PDF or scanned lab documents to extract parameters, detect abnormal ranges, and download summary PDFs.
             </p>
           </div>
-          <span className="text-xs text-[#0f6b68] font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
+          <span className="text-xs text-[#0b5755] dark:text-[#4aa497] font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
             Upload & Synthesize <ArrowRight className="w-3.5 h-3.5" />
           </span>
         </Link>
@@ -186,20 +184,20 @@ const DashboardPage = () => {
         {/* Quick Symptom Triage Card */}
         <Link
           to="/symptoms/search"
-          className="glass-card rounded-lg p-5 sm:p-6 hover:border-[#0f6b68] transition-colors duration-200 flex flex-col justify-between group"
+          className="glass-card rounded-3xl p-6 hover:border-[#b8ded5] transition-all flex flex-col justify-between group shadow-card"
         >
           <div className="space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-[#eef4f2] text-[#2f6974] flex items-center justify-center">
-              <Stethoscope className="w-6 h-6" />
+            <div className="w-10 h-10 rounded-xl bg-[#eaf5f0] dark:bg-[#13382c] text-[#1c644d] dark:text-[#86e2bf] flex items-center justify-center">
+              <Stethoscope className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-semibold text-slate-900 dark:text-white">
+            <h3 className="text-base font-bold font-serif-heading text-[#122b2e] dark:text-white">
               Symptom Triage Engine
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+            <p className="text-xs text-[#425b59] dark:text-[#b4cbc6] leading-relaxed">
               Search any medical condition or symptom to get plain-language overviews, safe OTC categories, and recovery checklists.
             </p>
           </div>
-          <span className="text-xs text-[#2f6974] font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
+          <span className="text-xs text-[#1c644d] dark:text-[#86e2bf] font-semibold flex items-center gap-1 mt-4 group-hover:translate-x-1 transition-transform">
             Launch Symptom Triage <ArrowRight className="w-3.5 h-3.5" />
           </span>
         </Link>
@@ -239,13 +237,13 @@ const DashboardPage = () => {
       >
         <form onSubmit={handleLogSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
               Measurement Type
             </label>
             <select
               value={logFormData.metricType}
               onChange={(e) => handleMetricTypeChange(e.target.value)}
-              className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+              className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
             >
               <option value="blood_glucose">Fasting Blood Glucose (mg/dL)</option>
               <option value="total_cholesterol">Total Cholesterol (mg/dL)</option>

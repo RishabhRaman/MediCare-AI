@@ -71,13 +71,13 @@ const SymptomSearchPage = ({ onEmergencyTrigger }) => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <span className="text-xs font-bold uppercase tracking-wider text-sky-500">
+        <span className="text-[10px] font-bold uppercase tracking-wider text-[#0b5755] dark:text-[#4aa497]">
           Clinical Guidance & Triage
         </span>
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+        <h1 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
           Symptom & Illness Triage
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+        <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-0.5">
           Ask questions about health concerns and receive home-care protocols, general OTC medicine classes, and recovery tasks.
         </p>
       </div>
@@ -96,11 +96,11 @@ const SymptomSearchPage = ({ onEmergencyTrigger }) => {
               searchId={currentSearchId}
             />
           ) : (
-            <div className="glass-card rounded-3xl p-8 sm:p-12 text-center text-slate-500 dark:text-slate-400 space-y-3">
-              <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 text-cyan-400 mx-auto flex items-center justify-center">
+            <div className="glass-card rounded-3xl p-8 sm:p-12 text-center text-[#6b8582] dark:text-[#7e9d97] space-y-3 shadow-card">
+              <div className="w-16 h-16 rounded-2xl bg-[#dcefe9] dark:bg-[#173b3f] text-[#0b5755] dark:text-[#83c4b8] mx-auto flex items-center justify-center">
                 <Stethoscope className="w-8 h-8" />
               </div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+              <h3 className="text-lg font-bold font-serif-heading text-[#122b2e] dark:text-white">
                 No Active Search Selected
               </h3>
               <p className="text-xs max-w-sm mx-auto">
@@ -112,16 +112,16 @@ const SymptomSearchPage = ({ onEmergencyTrigger }) => {
 
         {/* Right 1 col: Past Searches */}
         <div className="space-y-4">
-          <div className="glass-card rounded-3xl p-6 shadow-xl space-y-4">
+          <div className="glass-card rounded-3xl p-6 shadow-card space-y-4">
             <div className="flex items-center gap-2">
-              <History className="w-4 h-4 text-sky-500" />
-              <h3 className="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+              <History className="w-4 h-4 text-[#0b5755] dark:text-[#4aa497]" />
+              <h3 className="text-xs font-bold text-[#122b2e] dark:text-white uppercase tracking-wider">
                 Recent Triage History
               </h3>
             </div>
 
             {history.length === 0 ? (
-              <p className="text-xs text-slate-500 dark:text-slate-400 text-center py-4">
+              <p className="text-xs text-[#6b8582] dark:text-[#7e9d97] text-center py-4">
                 No past symptom searches found.
               </p>
             ) : (
@@ -130,19 +130,19 @@ const SymptomSearchPage = ({ onEmergencyTrigger }) => {
                   <div
                     key={item._id}
                     onClick={() => handleSelectHistoryItem(item)}
-                    className="p-3 rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 hover:border-sky-500/40 cursor-pointer transition-all flex items-center justify-between gap-2 group"
+                    className="p-3 rounded-2xl bg-[#f8faf8] dark:bg-[#0c1e20] border border-[#e2ebe7] dark:border-[#1c4246] hover:border-[#b8ded5] cursor-pointer transition-all flex items-center justify-between gap-2 group"
                   >
                     <div className="min-w-0 flex-1">
-                      <p className="text-xs font-bold text-slate-900 dark:text-white truncate group-hover:text-sky-500">
+                      <p className="text-xs font-bold text-[#122b2e] dark:text-white truncate group-hover:text-[#0b5755] dark:group-hover:text-[#4aa497]">
                         {item.aiResult?.conditionName || item.query}
                       </p>
-                      <p className="text-[10px] text-slate-500 truncate mt-0.5">
+                      <p className="text-[10px] text-[#6b8582] dark:text-[#7e9d97] truncate mt-0.5">
                         "{item.query}"
                       </p>
                     </div>
                     <button
                       onClick={(e) => handleDeleteHistoryItem(e, item._id)}
-                      className="p-1 rounded-lg text-slate-400 hover:text-red-500 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                      className="p-1 rounded-lg text-[#6b8582] hover:text-red-500 hover:bg-[#f3f7f5] dark:hover:bg-[#143236] transition-colors"
                       title="Delete search"
                     >
                       <Trash2 className="w-3.5 h-3.5" />

@@ -42,29 +42,27 @@ const LoginPage = () => {
       <div className="w-full max-w-md space-y-6">
         {/* Brand Header */}
         <div className="text-center space-y-2">
-          <div className="inline-flex w-12 h-12 rounded-2xl bg-gradient-to-tr from-sky-500 to-cyan-400 p-0.5 shadow-md shadow-sky-500/20">
-            <div className="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center">
-              <HeartPulse className="w-6 h-6 text-cyan-400" />
-            </div>
+          <div className="inline-flex w-12 h-12 rounded-2xl bg-[#0b5755] dark:bg-[#4aa497] items-center justify-center text-white dark:text-[#091617] shadow-card">
+            <HeartPulse className="w-6 h-6" />
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
             Welcome to MediCare AI
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6]">
             Sign in to access your personal medical dashboard & report analysis.
           </p>
         </div>
 
         {/* 1-Click Demo Login Banner */}
-        <div className="glass-card rounded-2xl p-4 border border-cyan-500/30 bg-gradient-to-r from-cyan-500/10 via-sky-500/10 to-transparent">
+        <div className="glass-card rounded-2xl p-4 border border-[#b8ded5] dark:border-[#2c5f64] bg-[#dcefe9]/40 dark:bg-[#173b3f]/40 shadow-subtle">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-cyan-400 shrink-0 animate-pulse" />
+              <Sparkles className="w-4 h-4 text-[#0b5755] dark:text-[#4aa497] shrink-0" />
               <div className="text-left">
-                <p className="text-xs font-bold text-slate-900 dark:text-white">
-                  Want a quick portfolio tour?
+                <p className="text-xs font-bold text-[#122b2e] dark:text-white">
+                  Want an instant portfolio tour?
                 </p>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                <p className="text-[10px] text-[#6b8582] dark:text-[#7e9d97]">
                   Instant sign-in preloaded with clinical lab data.
                 </p>
               </div>
@@ -77,13 +75,13 @@ const LoginPage = () => {
               icon={Sparkles}
               className="text-xs shrink-0"
             >
-              Demo Login
+              Demo Tour
             </Button>
           </div>
         </div>
 
         {/* Login Form */}
-        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl">
+        <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation border border-[#e2ebe7] dark:border-[#1c4246]">
           <form onSubmit={handleSubmit} className="space-y-4">
             <Input
               label="Email Address"
@@ -106,7 +104,7 @@ const LoginPage = () => {
             />
 
             <div className="flex justify-end">
-              <Link to="/forgot-password" className="text-xs font-semibold text-sky-500 hover:text-sky-400">
+              <Link to="/forgot-password" className="text-xs font-semibold text-[#0b5755] dark:text-[#4aa497] hover:underline">
                 Forgot password?
               </Link>
             </div>
@@ -116,7 +114,7 @@ const LoginPage = () => {
               variant="primary"
               size="lg"
               loading={loading}
-              className="w-full shadow-lg shadow-sky-500/20 text-sm py-3 mt-2"
+              className="w-full text-sm py-3 mt-2"
             >
               Sign In to Patient Portal
             </Button>
@@ -124,18 +122,18 @@ const LoginPage = () => {
 
           <div className="relative my-5">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200 dark:border-slate-700" />
+              <div className="w-full border-t border-[#e2ebe7] dark:border-[#1c4246]" />
             </div>
             <div className="relative flex justify-center text-[10px] uppercase tracking-wider">
-              <span className="bg-white dark:bg-slate-900 px-2 text-slate-400">or</span>
+              <span className="bg-white dark:bg-[#102629] px-2 text-[#6b8582] dark:text-[#7e9d97]">or</span>
             </div>
           </div>
 
           <GoogleAuthButton label="Continue with Google" />
 
-          <div className="mt-6 text-center text-xs text-slate-500 dark:text-slate-400">
+          <div className="mt-6 text-center text-xs text-[#6b8582] dark:text-[#7e9d97]">
             Don't have an account?{' '}
-            <Link to="/register" className="text-sky-500 hover:text-sky-400 font-semibold underline">
+            <Link to="/register" className="text-[#0b5755] dark:text-[#4aa497] font-semibold underline">
               Create an account
             </Link>
           </div>

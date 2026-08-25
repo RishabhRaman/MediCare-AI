@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Upload, FileText, Image as ImageIcon, AlertCircle, Sparkles, Clipboard } from 'lucide-react';
+import { Upload, FileText, Image as ImageIcon, Sparkles, Clipboard } from 'lucide-react';
 import Button from '../ui/Button';
 
 const FileUploadZone = ({ onAnalyzeFile, onAnalyzeText, isAnalyzing }) => {
@@ -69,16 +69,16 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
   };
 
   return (
-    <div className="glass-card rounded-lg p-6 sm:p-8">
+    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-elevation">
       {/* Tabs */}
-      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-4 mb-6">
+      <div className="flex items-center justify-between border-b border-[#e2ebe7] dark:border-[#1c4246] pb-4 mb-6">
         <div className="flex gap-2">
           <button
             onClick={() => setActiveTab('upload')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               activeTab === 'upload'
-                ? 'bg-[#0f6b68] text-white shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-[#0b5755] dark:bg-[#4aa497] text-white dark:text-[#091617] shadow-card'
+                : 'text-[#425b59] dark:text-[#b4cbc6] hover:bg-[#f3f7f5] dark:hover:bg-[#143236]'
             }`}
           >
             <Upload className="w-4 h-4" />
@@ -86,10 +86,10 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
           </button>
           <button
             onClick={() => setActiveTab('text')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
               activeTab === 'text'
-                ? 'bg-[#0f6b68] text-white shadow-sm'
-                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-[#0b5755] dark:bg-[#4aa497] text-white dark:text-[#091617] shadow-card'
+                : 'text-[#425b59] dark:text-[#b4cbc6] hover:bg-[#f3f7f5] dark:hover:bg-[#143236]'
             }`}
           >
             <Clipboard className="w-4 h-4" />
@@ -103,7 +103,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             size="sm"
             onClick={loadSampleText}
             icon={Sparkles}
-            className="text-xs text-cyan-400 hover:text-cyan-300"
+            className="text-xs text-[#0b5755] dark:text-[#4aa497]"
           >
             Load Sample Report
           </Button>
@@ -113,25 +113,25 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
       {/* Meta Options (Title & Category) */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
-            Report Title / Label (Optional)
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
+            Report Title (Optional)
           </label>
           <input
             type="text"
             placeholder="e.g. Annual Blood Work - May 2026"
             value={reportTitle}
             onChange={(e) => setReportTitle(e.target.value)}
-            className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+            className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
             Report Category
           </label>
           <select
             value={reportType}
             onChange={(e) => setReportType(e.target.value)}
-            className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+            className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
           >
             <option value="general_lab">General Laboratory Report</option>
             <option value="lipid_panel">Lipid Profile & Cholesterol</option>
@@ -155,10 +155,10 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             onClick={() => fileInputRef.current?.click()}
             className={`border-2 border-dashed rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 ${
               dragActive
-                ? 'border-[#0f6b68] bg-[#dcefe9] scale-[1.01]'
+                ? 'border-[#0b5755] bg-[#dcefe9]/60 scale-[1.01]'
                 : file
-                ? 'border-emerald-500/50 bg-emerald-500/5'
-                : 'border-[#b8c9c5] dark:border-slate-700/80 hover:border-[#0f6b68] dark:hover:border-[#4aa497]/60 bg-[#f6f8f7] dark:bg-slate-900/40'
+                ? 'border-[#3d8b72] bg-[#eaf5f0]/60 dark:bg-[#13382c]/40'
+                : 'border-[#c8d8d2] dark:border-[#1c4246] hover:border-[#0b5755] dark:hover:border-[#4aa497] bg-[#f8faf8] dark:bg-[#0c1e20]'
             }`}
           >
             <input
@@ -171,7 +171,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
 
             {file ? (
               <div className="flex flex-col items-center gap-3">
-                <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-[#eaf5f0] dark:bg-[#13382c] text-[#1c644d] dark:text-[#86e2bf] flex items-center justify-center shadow-card">
                   {file.type.includes('pdf') ? (
                     <FileText className="w-8 h-8" />
                   ) : (
@@ -179,27 +179,27 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
                   )}
                 </div>
                 <div>
-                  <p className="text-base font-bold text-slate-900 dark:text-white">
+                  <p className="text-base font-bold text-[#122b2e] dark:text-white">
                     {file.name}
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                    {(file.size / 1024 / 1024).toFixed(2)} MB • Ready for OCR extraction & AI synthesis
+                  <p className="text-xs text-[#6b8582] dark:text-[#7e9d97] mt-0.5">
+                    {(file.size / 1024 / 1024).toFixed(2)} MB • Ready for OCR extraction & clinical AI synthesis
                   </p>
                 </div>
-                <span className="text-xs text-sky-500 underline font-medium">
+                <span className="text-xs text-[#0b5755] dark:text-[#4aa497] underline font-medium">
                   Click or drag to change file
                 </span>
               </div>
             ) : (
               <div className="flex flex-col items-center gap-3">
-                <div className="w-16 h-16 rounded-lg bg-[#dcefe9] text-[#0f6b68] flex items-center justify-center border border-[#b8ded5]">
+                <div className="w-16 h-16 rounded-2xl bg-[#dcefe9] dark:bg-[#173b3f] text-[#0b5755] dark:text-[#83c4b8] flex items-center justify-center border border-[#b8ded5] dark:border-[#2c5f64]">
                   <Upload className="w-8 h-8" />
                 </div>
                 <div>
-                  <p className="text-base font-semibold text-slate-800 dark:text-slate-200">
-                    Drag & drop your medical document here, or <span className="text-[#0f6b68]">browse</span>
+                  <p className="text-base font-semibold text-[#122b2e] dark:text-white">
+                    Drag & drop your medical document here, or <span className="text-[#0b5755] dark:text-[#4aa497] font-bold">browse</span>
                   </p>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-[#6b8582] dark:text-[#7e9d97] mt-1">
                     Supports PDF, PNG, JPG, and WEBP lab reports (up to 15MB)
                   </p>
                 </div>
@@ -214,7 +214,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             disabled={!file}
             loading={isAnalyzing}
             icon={Sparkles}
-            className="w-full shadow-lg shadow-sky-500/20 text-base py-3.5"
+            className="w-full py-3.5 text-sm"
           >
             {isAnalyzing ? 'Extracting Text & Analyzing with AI...' : 'Analyze Medical Report with AI'}
           </Button>
@@ -228,9 +228,9 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
               placeholder="Paste raw lab values, doctor prescriptions, or diagnostic text here..."
               value={pastedText}
               onChange={(e) => setPastedText(e.target.value)}
-              className="w-full rounded-2xl text-sm font-mono border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+              className="w-full rounded-2xl text-xs sm:text-sm font-mono border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] p-4 text-[#122b2e] dark:text-[#edf7f3] placeholder-[#7e9d97] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30 leading-relaxed"
             />
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1.5">
+            <p className="text-xs text-[#6b8582] dark:text-[#7e9d97] mt-1.5">
               Characters: {pastedText.length} • Minimum 10 characters required.
             </p>
           </div>
@@ -242,7 +242,7 @@ Serum Creatinine          0.94        mg/dL       0.7 - 1.3 (NORMAL)`;
             disabled={pastedText.trim().length < 10}
             loading={isAnalyzing}
             icon={Sparkles}
-            className="w-full shadow-lg shadow-sky-500/20 text-base py-3.5"
+            className="w-full py-3.5 text-sm"
           >
             {isAnalyzing ? 'Analyzing Text with AI...' : 'Analyze Medical Text'}
           </Button>

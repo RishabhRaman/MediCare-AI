@@ -4,11 +4,8 @@ import {
   Plus,
   Check,
   Trash2,
-  Filter,
   Calendar,
-  AlertCircle,
   Sparkles,
-  TrendingUp,
 } from 'lucide-react';
 import api from '../services/api';
 import Button from '../components/ui/Button';
@@ -110,13 +107,13 @@ const RecommendationsPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-500">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#0b5755] dark:text-[#4aa497]">
             Actionable Next Steps
           </span>
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+          <h1 className="text-2xl sm:text-3xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
             Health Tasks & Recommendations
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#425b59] dark:text-[#b4cbc6] mt-0.5">
             Manage dietary goals, lifestyle interventions, and diagnostic test follow-ups.
           </p>
         </div>
@@ -126,34 +123,33 @@ const RecommendationsPage = () => {
           size="md"
           onClick={() => setIsModalOpen(true)}
           icon={Plus}
-          className="shadow-md shadow-sky-500/20"
         >
           Add Health Habit / Task
         </Button>
       </div>
 
       {/* Stats Summary Bar */}
-      <div className="glass-card rounded-3xl p-6 shadow-xl grid grid-cols-1 sm:grid-cols-4 gap-4">
+      <div className="glass-card rounded-3xl p-6 shadow-card grid grid-cols-1 sm:grid-cols-4 gap-4">
         <div className="space-y-1">
-          <p className="text-xs font-semibold text-slate-500">Total Action Items</p>
-          <p className="text-2xl font-black text-slate-900 dark:text-white">{stats.total}</p>
+          <p className="text-xs font-semibold text-[#6b8582] dark:text-[#7e9d97]">Total Action Items</p>
+          <p className="text-2xl font-bold font-serif-heading text-[#122b2e] dark:text-white">{stats.total}</p>
         </div>
         <div className="space-y-1">
-          <p className="text-xs font-semibold text-slate-500">Pending Tasks</p>
-          <p className="text-2xl font-black text-amber-500">{stats.pending}</p>
+          <p className="text-xs font-semibold text-[#6b8582] dark:text-[#7e9d97]">Pending Tasks</p>
+          <p className="text-2xl font-bold font-serif-heading text-[#d97706]">{stats.pending}</p>
         </div>
         <div className="space-y-1">
-          <p className="text-xs font-semibold text-slate-500">Completed</p>
-          <p className="text-2xl font-black text-emerald-500">{stats.completed}</p>
+          <p className="text-xs font-semibold text-[#6b8582] dark:text-[#7e9d97]">Completed</p>
+          <p className="text-2xl font-bold font-serif-heading text-[#1c644d] dark:text-[#86e2bf]">{stats.completed}</p>
         </div>
         <div className="space-y-1.5">
           <div className="flex items-center justify-between text-xs font-semibold">
-            <span className="text-slate-500">Adherence Rate</span>
-            <span className="text-sky-500 font-bold">{stats.completionRate}%</span>
+            <span className="text-[#6b8582] dark:text-[#7e9d97]">Adherence Rate</span>
+            <span className="text-[#0b5755] dark:text-[#4aa497] font-bold">{stats.completionRate}%</span>
           </div>
-          <div className="w-full h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div className="w-full h-2 bg-[#e2ebe7] dark:bg-[#1c4246] rounded-full overflow-hidden">
             <div
-              className="h-full bg-gradient-to-r from-sky-500 to-emerald-400 rounded-full transition-all duration-500"
+              className="h-full bg-[#0b5755] dark:bg-[#4aa497] rounded-full transition-all duration-500"
               style={{ width: `${stats.completionRate}%` }}
             />
           </div>
@@ -161,16 +157,16 @@ const RecommendationsPage = () => {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap gap-2 items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+      <div className="flex flex-wrap gap-2 items-center justify-between border-b border-[#e2ebe7] dark:border-[#1c4246] pb-3">
         <div className="flex flex-wrap gap-2">
           {['all', 'pending', 'completed'].map((st) => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
-              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
                 statusFilter === st
-                  ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  ? 'bg-[#0b5755] dark:bg-[#4aa497] text-white dark:text-[#091617] shadow-card'
+                  : 'text-[#425b59] dark:text-[#b4cbc6] hover:bg-[#f3f7f5] dark:hover:bg-[#143236]'
               }`}
             >
               {st}
@@ -181,7 +177,7 @@ const RecommendationsPage = () => {
         <select
           value={categoryFilter}
           onChange={(e) => setCategoryFilter(e.target.value)}
-          className="px-3 py-1.5 rounded-xl text-xs font-medium border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+          className="px-3 py-1.5 rounded-xl text-xs font-medium border border-[#d6e4df] dark:border-[#1c4246] bg-white dark:bg-[#0c1e20] text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
         >
           <option value="all">All Categories</option>
           <option value="diet">Diet & Nutrition</option>
@@ -197,9 +193,9 @@ const RecommendationsPage = () => {
       {loading ? (
         <SkeletonTable rows={4} />
       ) : tasks.length === 0 ? (
-        <div className="glass-card rounded-3xl p-12 text-center text-slate-500 dark:text-slate-400 space-y-3">
-          <CheckSquare className="w-12 h-12 text-slate-400 mx-auto" />
-          <h3 className="text-base font-bold text-slate-900 dark:text-white">
+        <div className="glass-card rounded-3xl p-12 text-center text-[#6b8582] dark:text-[#7e9d97] space-y-3 shadow-card">
+          <CheckSquare className="w-12 h-12 text-[#6b8582] mx-auto" />
+          <h3 className="text-base font-bold font-serif-heading text-[#122b2e] dark:text-white">
             No health tasks match this view
           </h3>
           <p className="text-xs max-w-sm mx-auto">
@@ -211,17 +207,17 @@ const RecommendationsPage = () => {
           {tasks.map((task) => (
             <div
               key={task._id}
-              className={`glass-card rounded-2xl p-4 sm:p-5 shadow-md flex items-start justify-between gap-4 transition-all duration-150 ${
+              className={`glass-card rounded-2xl p-4 sm:p-5 shadow-card flex items-start justify-between gap-4 transition-all duration-150 ${
                 task.status === 'completed' ? 'opacity-70' : ''
               }`}
             >
               <div className="flex items-start gap-3.5 min-w-0">
                 <button
                   onClick={() => handleToggle(task._id)}
-                  className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 border transition-all ${
+                  className={`w-6 h-6 rounded-lg flex items-center justify-center shrink-0 mt-0.5 border transition-all cursor-pointer ${
                     task.status === 'completed'
-                      ? 'bg-emerald-500 border-emerald-500 text-white'
-                      : 'border-slate-300 dark:border-slate-700 hover:border-sky-500'
+                      ? 'bg-[#10b981] border-[#10b981] text-white'
+                      : 'border-[#d6e4df] dark:border-[#1c4246] hover:border-[#0b5755]'
                   }`}
                 >
                   {task.status === 'completed' && <Check className="w-4 h-4" />}
@@ -229,14 +225,14 @@ const RecommendationsPage = () => {
 
                 <div className="space-y-1 min-w-0">
                   <h4
-                    className={`text-sm sm:text-base font-bold text-slate-900 dark:text-white ${
-                      task.status === 'completed' ? 'line-through text-slate-400' : ''
+                    className={`text-sm sm:text-base font-bold text-[#122b2e] dark:text-white ${
+                      task.status === 'completed' ? 'line-through text-[#6b8582]' : ''
                     }`}
                   >
                     {task.title}
                   </h4>
                   {task.description && (
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="text-xs text-[#425b59] dark:text-[#b4cbc6] leading-relaxed">
                       {task.description}
                     </p>
                   )}
@@ -257,7 +253,7 @@ const RecommendationsPage = () => {
                       {task.priority?.toUpperCase()} PRIORITY
                     </Badge>
                     {task.dueDate && (
-                      <span className="text-[11px] text-slate-500 flex items-center gap-1">
+                      <span className="text-[11px] text-[#6b8582] dark:text-[#7e9d97] flex items-center gap-1">
                         <Calendar className="w-3 h-3" /> Due:{' '}
                         {new Date(task.dueDate).toLocaleDateString('en-US', {
                           month: 'short',
@@ -271,7 +267,7 @@ const RecommendationsPage = () => {
 
               <button
                 onClick={() => handleDelete(task._id)}
-                className="text-slate-400 hover:text-red-500 p-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="text-[#6b8582] hover:text-red-500 p-2 rounded-xl hover:bg-[#f3f7f5] dark:hover:bg-[#143236] transition-colors cursor-pointer"
                 title="Delete task"
               >
                 <Trash2 className="w-4 h-4" />
@@ -299,7 +295,7 @@ const RecommendationsPage = () => {
           />
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
               Description / Notes
             </label>
             <textarea
@@ -307,19 +303,19 @@ const RecommendationsPage = () => {
               placeholder="e.g. Oatmeal with chia seeds to support cholesterol regulation."
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/30"
+              className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] p-3 text-[#122b2e] dark:text-[#edf7f3] placeholder-[#7e9d97] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
                 Category
               </label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100"
+                className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               >
                 <option value="diet">Diet & Nutrition</option>
                 <option value="exercise">Exercise & Cardio</option>
@@ -331,13 +327,13 @@ const RecommendationsPage = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-1.5">
+              <label className="block text-xs font-bold uppercase tracking-wider text-[#425b59] dark:text-[#b4cbc6] mb-1.5">
                 Priority
               </label>
               <select
                 value={formData.priority}
                 onChange={(e) => setFormData({ ...formData, priority: e.target.value })}
-                className="w-full rounded-xl text-sm border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3.5 py-2.5 text-slate-900 dark:text-slate-100"
+                className="w-full rounded-xl text-xs sm:text-sm border border-[#d6e4df] dark:border-[#1c4246] bg-[#f8faf8] dark:bg-[#0c1e20] px-3.5 py-2.5 text-[#122b2e] dark:text-[#edf7f3] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0b5755]/30"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>

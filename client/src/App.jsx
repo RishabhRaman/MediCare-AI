@@ -33,8 +33,8 @@ const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, loading } = useAuth();
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-sky-500 border-t-transparent rounded-full animate-spin" />
+      <div className="min-h-screen flex items-center justify-center bg-[#fbfcfa] dark:bg-[#091617]">
+        <div className="w-8 h-8 border-3 border-[#0b5755] border-t-transparent dark:border-[#4aa497] rounded-full animate-spin" />
       </div>
     );
   }
@@ -61,7 +61,7 @@ const AppContent = () => {
     location.pathname.startsWith('/auth/callback');
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f6f8f7] text-[#173b3f] dark:bg-[#0d2527] dark:text-slate-100 transition-colors duration-200">
+    <div className="min-h-screen flex flex-col bg-[#fbfcfa] text-[#122b2e] dark:bg-[#091617] dark:text-[#edf7f3] transition-colors duration-200">
       {/* Permanent Safety Notice Banner */}
       <DisclaimerBanner />
 
@@ -78,80 +78,80 @@ const AppContent = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
-              initial={{ opacity: 0, y: 8 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.22 }}
+              transition={{ duration: 0.18 }}
             >
-          <Routes location={location}>
-            <Route path="/" element={<LandingPage onEmergencyTrigger={handleTriggerEmergency} />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-            <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-            <Route path="/auth/callback" element={<AuthCallbackPage />} />
+              <Routes location={location}>
+                <Route path="/" element={<LandingPage onEmergencyTrigger={handleTriggerEmergency} />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+                <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
+                <Route path="/auth/callback" element={<AuthCallbackPage />} />
 
-            {/* Protected Portal Routes */}
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute>
-                  <DashboardPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/reports/analyze"
-              element={
-                <ProtectedRoute>
-                  <ReportAnalyzerPage onEmergencyTrigger={handleTriggerEmergency} />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/symptoms/search"
-              element={
-                <ProtectedRoute>
-                  <SymptomSearchPage onEmergencyTrigger={handleTriggerEmergency} />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/reports/history"
-              element={
-                <ProtectedRoute>
-                  <ReportsHistoryPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/recommendations"
-              element={
-                <ProtectedRoute>
-                  <RecommendationsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/metrics"
-              element={
-                <ProtectedRoute>
-                  <MetricsPage />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute>
-                  <ProfilePage />
-                </ProtectedRoute>
-              }
-            />
+                {/* Protected Portal Routes */}
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute>
+                      <DashboardPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/reports/analyze"
+                  element={
+                    <ProtectedRoute>
+                      <ReportAnalyzerPage onEmergencyTrigger={handleTriggerEmergency} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/symptoms/search"
+                  element={
+                    <ProtectedRoute>
+                      <SymptomSearchPage onEmergencyTrigger={handleTriggerEmergency} />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/reports/history"
+                  element={
+                    <ProtectedRoute>
+                      <ReportsHistoryPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/recommendations"
+                  element={
+                    <ProtectedRoute>
+                      <RecommendationsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/metrics"
+                  element={
+                    <ProtectedRoute>
+                      <MetricsPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute>
+                      <ProfilePage />
+                    </ProtectedRoute>
+                  }
+                />
 
-            {/* 404 Catch-All */}
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
+                {/* 404 Catch-All */}
+                <Route path="*" element={<NotFoundPage />} />
+              </Routes>
             </motion.div>
           </AnimatePresence>
         </main>
@@ -174,13 +174,14 @@ const AppContent = () => {
       <Toaster
         position="top-right"
         toastOptions={{
-          className: 'glass-card text-xs sm:text-sm font-medium',
+          className: 'text-xs sm:text-sm font-semibold shadow-elevation',
           duration: 3500,
           style: {
-            background: '#0f172a',
-            color: '#f8fafc',
-            border: '1px solid rgba(14, 165, 233, 0.3)',
+            background: '#102629',
+            color: '#edf7f3',
+            border: '1px solid #1c4246',
             borderRadius: '16px',
+            padding: '12px 16px',
           },
         }}
       />

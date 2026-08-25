@@ -15,13 +15,13 @@ import Button from '../ui/Button';
 const CustomTooltip = ({ active, payload, label, unit }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="glass-card p-3 rounded-xl border border-sky-500/30 text-xs shadow-xl">
-        <p className="font-semibold text-slate-400 mb-1">{label}</p>
-        <p className="font-bold text-sky-400 text-sm">
+      <div className="bg-white dark:bg-[#102629] p-3.5 rounded-2xl border border-[#e2ebe7] dark:border-[#1c4246] text-xs shadow-elevation">
+        <p className="font-bold text-[#6b8582] dark:text-[#7e9d97] mb-1">{label}</p>
+        <p className="font-bold text-[#0b5755] dark:text-[#4aa497] text-sm">
           {payload[0].name}: {payload[0].value} {unit}
         </p>
         {payload[1] && (
-          <p className="font-bold text-cyan-300 text-sm">
+          <p className="font-bold text-[#3d8b72] dark:text-[#83c4b8] text-sm">
             {payload[1].name}: {payload[1].value} {unit}
           </p>
         )}
@@ -39,8 +39,8 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
       title: 'Fasting Blood Glucose',
       unit: 'mg/dL',
       threshold: 100,
-      thresholdLabel: 'Pre-diabetes threshold (100 mg/dL)',
-      color: '#0ea5e9',
+      thresholdLabel: 'Target Range (< 100 mg/dL)',
+      color: '#0b5755',
       gradientId: 'glucoseGrad',
     },
     total_cholesterol: {
@@ -48,15 +48,15 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
       unit: 'mg/dL',
       threshold: 200,
       thresholdLabel: 'Target (< 200 mg/dL)',
-      color: '#f59e0b',
+      color: '#d97706',
       gradientId: 'cholGrad',
     },
     blood_pressure: {
       title: 'Blood Pressure (Sys / Dia)',
       unit: 'mmHg',
       threshold: 120,
-      thresholdLabel: 'Normal (< 120/80)',
-      color: '#ef4444',
+      thresholdLabel: 'Standard (< 120/80)',
+      color: '#dc2626',
       gradientId: 'bpGrad',
     },
     weight: {
@@ -64,7 +64,7 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
       unit: 'kg',
       threshold: 75,
       thresholdLabel: 'Target Weight (75 kg)',
-      color: '#10b981',
+      color: '#3d8b72',
       gradientId: 'weightGrad',
     },
   };
@@ -92,16 +92,16 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
         ];
 
   return (
-    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+    <div className="glass-card rounded-3xl p-6 sm:p-8 shadow-card space-y-6">
       {/* Header & Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
-          <Activity className="w-5 h-5 text-sky-500" />
+          <Activity className="w-5 h-5 text-[#0b5755] dark:text-[#4aa497]" />
           <div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+            <h3 className="text-lg sm:text-xl font-bold font-serif-heading text-[#122b2e] dark:text-white">
               Biometric Trajectory & Trends
             </h3>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-[#6b8582] dark:text-[#7e9d97]">
               Track longitudinal biomarkers extracted from your reports or logged manually.
             </p>
           </div>
@@ -115,15 +115,15 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
       </div>
 
       {/* Metric Selectors */}
-      <div className="flex flex-wrap gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
+      <div className="flex flex-wrap gap-2 border-b border-[#e2ebe7] dark:border-[#1c4246] pb-3">
         {Object.entries(metricConfigs).map(([key, cfg]) => (
           <button
             key={key}
             onClick={() => setSelectedMetric(key)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
               selectedMetric === key
-                ? 'bg-sky-500 text-white shadow-md shadow-sky-500/20'
-                : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                ? 'bg-[#0b5755] dark:bg-[#4aa497] text-white dark:text-[#091617] shadow-card'
+                : 'text-[#425b59] dark:text-[#b4cbc6] hover:bg-[#f3f7f5] dark:hover:bg-[#143236]'
             }`}
           >
             {cfg.title}
@@ -137,20 +137,20 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
           <AreaChart data={displayData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
             <defs>
               <linearGradient id={currentConfig.gradientId} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={currentConfig.color} stopOpacity={0.4} />
+                <stop offset="5%" stopColor={currentConfig.color} stopOpacity={0.35} />
                 <stop offset="95%" stopColor={currentConfig.color} stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#334155" opacity={0.25} />
+            <CartesianGrid strokeDasharray="3 3" stroke="#94a3b8" opacity={0.2} />
             <XAxis
               dataKey="date"
-              stroke="#64748b"
+              stroke="#6b8582"
               fontSize={11}
               tickLine={false}
               axisLine={false}
             />
             <YAxis
-              stroke="#64748b"
+              stroke="#6b8582"
               fontSize={11}
               tickLine={false}
               axisLine={false}
@@ -160,11 +160,11 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
             {currentConfig.threshold && (
               <ReferenceLine
                 y={currentConfig.threshold}
-                stroke="#94a3b8"
+                stroke="#6b8582"
                 strokeDasharray="4 4"
                 label={{
                   value: currentConfig.thresholdLabel,
-                  fill: '#94a3b8',
+                  fill: '#6b8582',
                   fontSize: 10,
                   position: 'insideTopRight',
                 }}
@@ -175,7 +175,7 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
               dataKey="value"
               name={currentConfig.title}
               stroke={currentConfig.color}
-              strokeWidth={3}
+              strokeWidth={2.5}
               fillOpacity={1}
               fill={`url(#${currentConfig.gradientId})`}
             />
@@ -184,7 +184,7 @@ const MetricsChart = ({ metricsGrouped = {}, onOpenLogModal }) => {
                 type="monotone"
                 dataKey="secondaryValue"
                 name="Diastolic BP"
-                stroke="#38bdf8"
+                stroke="#3d8b72"
                 strokeWidth={2}
                 fillOpacity={0}
               />
