@@ -1,6 +1,31 @@
 const SearchHistory = require('../models/SearchHistory');
 const { triageSymptoms } = require('../services/aiService');
 
+// @desc    Public Triage symptoms for homepage visitors (unauthenticated)
+// @route   POST /api/search/public-symptoms
+// @access  Public
+exports.publicSearchSymptoms = async (req, res, next) => {
+  try {
+    const { query } = req.body;
+
+    if (!query || query.trim().length < 3) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please enter a symptom description or condition to search.',
+      });
+    }
+
+    const aiResult = await triageSymptoms(query, {});
+
+    res.status(200).json({
+      success: true,
+      aiResult,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 // @desc    Triage symptoms and search medical knowledge
 // @route   POST /api/search/symptoms
 // @access  Private
